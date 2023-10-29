@@ -1,5 +1,5 @@
 ---
-title: Hello, World!
+title: 'Hello, World!'
 ---
 
-Edit me!
+This is my first post!
