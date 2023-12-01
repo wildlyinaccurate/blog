@@ -109,7 +109,7 @@ Creating a virtual DOM tree is relatively easy, but it's not very useful. What w
 
 We can write a surprisingly simple function that does exactly this, by mounting a VDOM tree onto a DOM node.
 
-```
+```js
 // The mount function takes a vnode and mounts it to an existing "parent" DOM node
 function mount(vnode, parentDom) {
     if (typeof vnode === "string" || typeof vnode === "number") {
