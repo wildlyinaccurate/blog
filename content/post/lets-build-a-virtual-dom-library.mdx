@@ -1,0 +1,142 @@
+---
+title: Let's build a virtual DOM library!
+created_at: 2023-12-01T11:00:00.000Z
+---
+
+Have you ever wondered how the virtual DOM _really_ works? For me, the best way to learn how something works is to take it apart and rebuild it. If that's how you like to learn, then strap in, because we're about to build a virtual DOM library from scratch.
+
+### What is a virtual DOM?
+
+You have hopefully already heard of the term _virtual DOM_, or _VDOM_. It's a concept where a virtual representation of [the Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) is built up in-memory, and then later synchronised with the "real" DOM. The VDOM concept was pioneered by React, and has since been used as the basis of many other frameworks' rendering systems including Vue.
+
+The original goal of the virtual DOM concept was to allow web developers to render updates to a web page quickly, without making expensive or unnecessary DOM manipulations. This reasoning does not necessarily hold up today, since web browsers have become very efficient at performing DOM manipulations. Regardless, the virtual DOM is still a popular and well-understood rendering mechanism.
+
+All virtual DOM implementations work slightly differently, but the basic concept is the same: plain JavaScript objects are used to represent a tree of virtual DOM nodes. These virtual nodes, or `vnodes`, are relatively simple:
+
+```
+const vnode = {
+    type: "h1",
+    props: {
+        className: "page-title"
+    },
+    children: [],
+}
+```
+
+There are the three basic attributes of a `vnode`:
+
+- **type**: Sometimes called **tag**, this is the type of DOM node that will be rendered - often an HTML element name.
+- **props**: These are properties that can be set on the DOM node. These are the property names in the **JavaScript DOM API**, which are sometimes different to the corresponding HTML attribute name. The most common example of this is the `class` attribute in HTML is set with the `className` property in JavaScript.
+- **children**: A list of more `vnodes`.
+
+With this simple object structure, a virtual DOM renderer can traverse a VDOM tree and create a real DOM from it. This process is usually called **mounting**. To avoid unnecessary changes to the real DOM, most VDOM renderers can compare a VDOM tree against an already-mounted DOM and update just the parts that have changed. React calls this process **reconciliation**, but other libraries call it **diffing** or **patching**.
+
+```
+                                       React to DOM events
+           ┌────────────────────────────────────────────────────────────────────────────┐
+           │                                                                            │
+           ▼                                                                            │
+┌────────────────────┐                ┌────────────────────┐                 ┌──────────┴─────────┐
+│                    │     Render     │                    │  Mount / Patch  │                    │
+│  Component render  ├───────────────►│     Virtual DOM    ├────────────────►│      Real DOM      │
+│      function      │                │        Tree        │                 │                    │
+│                    │                │                    │                 │                    │
+└────────────────────┘                └────────────────────┘                 └────────────────────┘
+```
+
+### Our first VDOM function
+
+Now that we understand what the virtual DOM is, we can write our first function:
+
+```js
+function createVNode(type, props, ...children) {
+    return {
+        type,
+        props,
+        children,
+    };
+}
+```
+
+This function seems redundant right now, because all it's doing is turning the function arguments into object properties. As we build out our library, this function will start to do more.
+
+For illustration purposes, let's build a simple VDOM:
+
+```js
+createVNode("div", { className: "container" }, [
+    createVNode("h1", null, ["Hello, World!"]),
+    createVNode("p", null, ["We're building a virtual DOM library."]),
+]);
+```
+
+The output of this function should look something like this:
+
+```js
+{
+    type: "div",
+    props: {
+        className: "container"
+    },
+    children: [
+        {
+            type: "h1",
+            props: null,
+            children: [
+                "Hello, World!"
+            ]
+        },
+        {
+            type: "p",
+            props: null,
+            children: [
+                "We're building a virtual DOM library."
+            ]
+        }
+    ]
+}
+```
+
+### Mounting our virtual DOM
+
+Creating a virtual DOM tree is relatively easy, but it's not very useful. What we really want is turn our VDOM tree into a real DOM in a HTML document. We want our example VDOM tree above to turn into something like this:
+
+```html
+<div class="container">
+    <h1>Hello, World!</h1>
+    <p>We're building a virtual DOM library.</p>
+</div>
+```
+
+We can write a surprisingly simple function that does exactly this, by mounting a VDOM tree onto a DOM node.
+
+```
+// The mount function takes a vnode and mounts it to an existing "parent" DOM node
+function mount(vnode, parentDom) {
+    if (typeof vnode === "string" || typeof vnode === "number") {
+        // Strings and numbers are easy - they can be set as the textContent of the DOM node.
+        parentDom.textContent = vnode;
+    } else {
+        // Everything else is assumed to be a valid element name.
+        const domNode = document.createElement(vnode.type);
+
+        if (vnode.props) {
+            // All of the props are assumed to be valid attributes for the element.
+            for (const prop in vnode.props) {
+                domNode[prop] = vnode.props[prop];
+            }
+        }
+
+        if (vnode.children) {
+            // Mount each of the child nodes to the new DOM node.
+            vnode.children.forEach((child) => mount(child, domNode));
+        }
+
+        // When we're finished, append the new DOM node to the parent.
+        parentDom.appendChild(domNode);
+    }
+}
+```
+
+The embed below shows this code in action. It works!
+
+<ScriptEmbed src="https://jsfiddle.net/wildlyinaccurate/uzbn4gw7/6/embed/result,html,js/" />

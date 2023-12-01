@@ -5,6 +5,7 @@ export default {
   label: "Blog Posts",
   name: "post",
   path: "content/post",
+  format: "mdx",
   fields: [
     {
       type: "string",
@@ -30,13 +31,34 @@ export default {
       },
     },
     {
-      type: "string",
-      label: "Blog Post Body",
+      type: "rich-text",
+      label: "Post Body",
       name: "body",
       isBody: true,
-      ui: {
-        component: "textarea",
-      },
+      templates: [
+        {
+          name: "CodeBlock",
+          label: "Syntax Highlighted Code Block",
+          fields: [
+            {
+              name: "language",
+              label: "Language",
+              type: "string",
+            },
+          ],
+        },
+        {
+          name: "ScriptEmbed",
+          label: "JavaScript Embed",
+          fields: [
+            {
+              name: "src",
+              label: "Source",
+              type: "string",
+            },
+          ],
+        },
+      ],
     },
   ],
   indexes: [

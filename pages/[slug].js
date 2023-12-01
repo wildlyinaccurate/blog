@@ -41,7 +41,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params }) => {
   const { data, query, variables } = await client.queries
     .post({
-      relativePath: `${params.slug}.md`,
+      relativePath: `${params.slug}.mdx`,
     })
     .catch(() => {
       return client.queries.page({

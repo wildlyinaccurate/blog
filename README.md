@@ -1,44 +1,35 @@
-This is a [Tina CMS](https://tina.io/) project.
+## The _Structured Thoughts_ Blog
 
-## Local Development
+This repository contains the source code and content for [the Structured Thoughts blog](https://blog.structuredthoughts.dev/).
 
-Install the project's dependencies:
+## Licenses
 
-```
-yarn install
-```
+### Post and Page Content
 
-Run the project locally:
+The post and page content in this repository is copyright and is not available under any Creative Commons license. For usage permission, please raise a GitHub issue on this repository.
 
-```
-yarn dev
-```
+### Code
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The code in this repository is licensed under The MIT License.
 
-### Building the Starter Locally (Using the hosted content API)
+MIT License
 
-Replace the `.env.example`, with `.env`
+Copyright (c) 2023 Joseph Wynn
 
-```
-NEXT_PUBLIC_TINA_CLIENT_ID=<get this from the project you create at app.tina.io>
-TINA_TOKEN=<get this from the project you create at app.tina.io>
-NEXT_PUBLIC_TINA_BRANCH=<Specify the branch with Tina configured>
-```
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-Build the project:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-```bash
-yarn build
-```
-
-## Learn More
-
-To learn more about Tina, take a look at the following resources:
-
-- [Tina Docs](https://tina.io/docs)
-- [Getting starter guide](https://tina.io/guides/tina-cloud/starter/overview/)
-
-You can check out [Tina Github repository](https://github.com/tinacms/tinacms) - your feedback and contributions are welcome!
-
-## [Deploy on Vercel](https://tina.io/guides/tina-cloud/add-tinacms-to-existing-site/deployment/)
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
