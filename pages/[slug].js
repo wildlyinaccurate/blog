@@ -1,6 +1,6 @@
-import { Layout } from "../components/Layout";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
-import { tinaField, useTina } from "tinacms/dist/react";
+import { useTina } from "tinacms/dist/react";
+import { Page } from "../components/Page";
+import { Post } from "../components/Post";
 import { client } from "../tina/__generated__/client";
 
 export default function PageOrPost(props) {
@@ -11,35 +11,9 @@ export default function PageOrPost(props) {
   });
 
   if (data.post) {
-    const post = data.post;
-
-    return (
-      <Layout title={post.title}>
-        <h2 data-tina-field={tinaField(post, "title")}>{post.title}</h2>
-        <div data-tina-field={tinaField(post, "body")}>
-          <TinaMarkdown content={post.body} />
-          <code>
-            <pre
-              style={{
-                backgroundColor: "lightgray",
-              }}
-            >
-              {JSON.stringify(post, null, 2)}
-            </pre>
-          </code>
-        </div>
-      </Layout>
-    );
+    return <Post post={data.post} />;
   } else if (data.page) {
-    const page = data.page;
-
-    return (
-      <Layout title={page.title}>
-        <div data-tina-field={tinaField(page, "body")}>
-          <TinaMarkdown content={page.body} />
-        </div>
-      </Layout>
-    );
+    return <Page page={data.page} />;
   }
 
   return "Not Found";
