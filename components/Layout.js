@@ -1,28 +1,46 @@
-import Link from 'next/link'
-import Head from 'next/head'
+import Link from "next/link";
+import Head from "next/head";
 
 export const Layout = (props) => {
   return (
     <div
       style={{
-        margin: '3rem',
+        margin: "3rem",
       }}
     >
       <Head>
-        <title>Tina App</title>
-        <meta name="description" content="A TinaCMS Application" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>
+          {props.title ? `${props.title} | ` : ""}Structured Thoughts Blog
+        </title>
+        <link
+          rel="apple-touch-icon"
+          sizes="180x180"
+          href="/apple-touch-icon.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
       </Head>
       <header>
+        <h1>The Structured Thoughts Blog</h1>
         <Link href="/">
-          <a>Home</a>
-        </Link>
-        {' | '}
-        <Link href="/posts">
           <a>Posts</a>
+        </Link>
+        {" | "}
+        <Link href="/about">
+          <a>About</a>
         </Link>
       </header>
       <main>{props.children}</main>
     </div>
-  )
-}
+  );
+};

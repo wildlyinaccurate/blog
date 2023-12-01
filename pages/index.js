@@ -1,29 +1,35 @@
-import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Layout } from "../components/Layout";
-import { tinaField, useTina } from "tinacms/dist/react";
+import Link from "next/link";
+import { useTina } from "tinacms/dist/react";
 import { client } from "../tina/__generated__/client";
 
 export default function Home(props) {
-  // data passes though in production mode and data is updated to the sidebar data in edit-mode
   const { data } = useTina({
     query: props.query,
     variables: props.variables,
     data: props.data,
   });
-
-  const content = data.page.body;
+  const postsList = data.postConnection.edges;
   return (
     <Layout>
-      <div data-tina-field={tinaField(data.page, "body")}>
-        <TinaMarkdown content={content} />
-      </div>
+      <h2>Posts</h2>
+      <ul>
+        {postsList.map((post) => (
+          <li key={post.node.id}>
+            <Link href={post.node._sys.filename}>
+              <a>{post.node.title}</a>
+            </Link>
+          </li>
+        ))}
+      </ul>
     </Layout>
   );
 }
 
 export const getStaticProps = async () => {
-  const { data, query, variables } = await client.queries.page({
-    relativePath: "home.mdx",
+  const { data, query, variables } = await client.queries.postConnection({
+    sort: "created_at",
+    last: -1,
   });
 
   return {
@@ -31,7 +37,6 @@ export const getStaticProps = async () => {
       data,
       query,
       variables,
-      //myOtherProp: 'some-other-data',
     },
   };
 };

@@ -12,6 +12,24 @@ export default {
       name: "title",
     },
     {
+      type: "datetime",
+      label: "Published Date",
+      name: "created_at",
+      ui: {
+        dateFormat: "MMMM DD YYYY",
+        timeFormat: "hh:mm A",
+      },
+    },
+    {
+      type: "datetime",
+      label: "Last Updated Date",
+      name: "updated_at",
+      ui: {
+        dateFormat: "MMMM DD YYYY",
+        timeFormat: "hh:mm A",
+      },
+    },
+    {
       type: "string",
       label: "Blog Post Body",
       name: "body",
@@ -21,9 +39,15 @@ export default {
       },
     },
   ],
+  indexes: [
+    {
+      name: "created_at",
+      fields: [{ name: "created_at" }],
+    },
+  ],
   ui: {
     router: ({ document }) => {
-      return `/posts/${document._sys.filename}`;
+      return `/${document._sys.filename}`;
     },
   },
 };
