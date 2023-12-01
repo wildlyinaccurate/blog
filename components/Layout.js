@@ -3,16 +3,13 @@ import Head from "next/head";
 
 export const Layout = (props) => {
   return (
-    <div
-      style={{
-        margin: "3rem",
-      }}
-    >
+    <>
       <Head>
-        <link rel="stylesheet" href="/style.css" />
         <title>
           {props.title ? `${props.title} | ` : ""}Structured Thoughts Blog
         </title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="stylesheet" href="/style.css" />
         <link
           rel="apple-touch-icon"
           sizes="180x180"
@@ -31,8 +28,8 @@ export const Layout = (props) => {
           href="/favicon-16x16.png"
         />
       </Head>
-      <div className="main-wrapper">
-        <header>
+      <header>
+        <div className="wrapper">
           <h1>
             The <i>Structured Thoughts</i> Blog
           </h1>
@@ -46,10 +43,12 @@ export const Layout = (props) => {
               <a>About</a>
             </Link>
           </div>
-        </header>
+        </div>
+      </header>
 
+      <div className="wrapper">
         <main>{props.children}</main>
       </div>
-    </div>
+    </>
   );
 };

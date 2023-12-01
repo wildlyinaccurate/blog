@@ -3,17 +3,17 @@ title: Let's build a virtual DOM library!
 created_at: 2023-12-01T11:00:00.000Z
 ---
 
-Have you ever wondered how the virtual DOM _really_ works? For me, the best way to learn how something works is to take it apart and rebuild it. If that's how you like to learn, then strap in, because we're about to build a virtual DOM library from scratch.
+Have you ever wondered how the virtual DOM *really* works? For me, the best way to learn how something works is to take it apart and rebuild it. If that's how you like to learn, then strap in, because we're about to build a virtual DOM library from scratch.
 
 ### What is a virtual DOM?
 
-You have hopefully already heard of the term _virtual DOM_, or _VDOM_. It's a concept where a virtual representation of [the Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) is built up in-memory, and then later synchronised with the "real" DOM. The VDOM concept was pioneered by React, and has since been used as the basis of many other frameworks' rendering systems including Vue.
+You have hopefully already heard of the term *virtual DOM*, or *VDOM*. It's a concept where a virtual representation of [the Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) is built up in-memory, and then later synchronised with the "real" DOM. The VDOM concept was pioneered by React, and has since been used as the basis of many other frameworks' rendering systems including Vue.
 
 The original goal of the virtual DOM concept was to allow web developers to render updates to a web page quickly, without making expensive or unnecessary DOM manipulations. This reasoning does not necessarily hold up today, since web browsers have become very efficient at performing DOM manipulations. Regardless, the virtual DOM is still a popular and well-understood rendering mechanism.
 
 All virtual DOM implementations work slightly differently, but the basic concept is the same: plain JavaScript objects are used to represent a tree of virtual DOM nodes. These virtual nodes, or `vnodes`, are relatively simple:
 
-```
+```js
 const vnode = {
     type: "h1",
     props: {
@@ -25,9 +25,9 @@ const vnode = {
 
 There are the three basic attributes of a `vnode`:
 
-- **type**: Sometimes called **tag**, this is the type of DOM node that will be rendered - often an HTML element name.
-- **props**: These are properties that can be set on the DOM node. These are the property names in the **JavaScript DOM API**, which are sometimes different to the corresponding HTML attribute name. The most common example of this is the `class` attribute in HTML is set with the `className` property in JavaScript.
-- **children**: A list of more `vnodes`.
+* **type**: Sometimes called **tag**, this is the type of DOM node that will be rendered - often an HTML element name.
+* **props**: These are properties that can be set on the DOM node. These are the property names in the **JavaScript DOM API**, which are sometimes different to the corresponding HTML attribute name. The most common example of this is the `class` attribute in HTML is set with the `className` property in JavaScript.
+* **children**: A list of more `vnodes`.
 
 With this simple object structure, a virtual DOM renderer can traverse a VDOM tree and create a real DOM from it. This process is usually called **mounting**. To avoid unnecessary changes to the real DOM, most VDOM renderers can compare a VDOM tree against an already-mounted DOM and update just the parts that have changed. React calls this process **reconciliation**, but other libraries call it **diffing** or **patching**.
 

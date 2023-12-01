@@ -1,10 +1,10 @@
-import { CodeBlock } from "./CodeBlock";
-import { Layout } from "./Layout";
-import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { Prism } from "tinacms/dist/rich-text/prism";
 import { tinaField } from "tinacms/dist/react";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import { Layout } from "./Layout";
 
 const components = {
-  CodeBlock,
+  code_block: Prism,
   ScriptEmbed: (props) => <script async src={props.src}></script>,
 };
 
