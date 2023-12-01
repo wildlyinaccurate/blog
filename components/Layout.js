@@ -6,7 +6,7 @@ export const Layout = (props) => {
     <>
       <Head>
         <title>
-          {props.title ? `${props.title} | ` : ""}Structured Thoughts Blog
+          {props.title ? `${props.title} | ` : ""}The Structured Thoughts Blog
         </title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <link rel="stylesheet" href="/style.css" />
