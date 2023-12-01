@@ -1,5 +1,5 @@
-import { CodeBlock } from "../components/CodeBlock";
-import { Layout } from "../components/Layout";
+import { CodeBlock } from "./CodeBlock";
+import { Layout } from "./Layout";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { tinaField } from "tinacms/dist/react";
 
