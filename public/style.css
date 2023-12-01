@@ -94,6 +94,12 @@ header {
   padding: 2rem;
 }
 
+.site-title {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
 .nav {
   margin-top: 1rem;
 }
