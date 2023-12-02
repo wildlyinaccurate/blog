@@ -28,7 +28,7 @@ export const Layout = (props) => {
           href="/favicon-16x16.png"
         />
       </Head>
-      <header>
+      <header className="band">
         <div className="wrapper">
           <h1 className="site-title">
             <img src="structured-thoughts-53x42.png" />
@@ -50,6 +50,8 @@ export const Layout = (props) => {
       <div className="wrapper">
         <main>{props.children}</main>
       </div>
+
+      <footer className="band" />
     </>
   );
 };

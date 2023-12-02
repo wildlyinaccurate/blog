@@ -88,10 +88,13 @@ body {
   padding: 0 1rem;
 }
 
-header {
-  background-color: #B5D8A0;
-  margin-bottom: 2rem;
+.band {
+  background-color: #b5d8a0;
   padding: 2rem;
+}
+
+header {
+  margin-bottom: 2rem;
 }
 
 .site-title {
@@ -102,6 +105,10 @@ header {
 
 .nav {
   margin-top: 1rem;
+}
+
+main {
+  margin-bottom: 60px;
 }
 
 pre {
