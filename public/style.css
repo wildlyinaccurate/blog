@@ -83,7 +83,7 @@ body {
 }
 
 .wrapper {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -111,8 +111,19 @@ main {
   margin-bottom: 60px;
 }
 
+pre, code {
+  background-color: #f2f2f2 !important;
+  border-radius: 0.5rem;
+  color: #403f53;
+  font-size: 1rem;
+}
+
 pre {
-  padding: 1rem 2rem;
+  padding: 0.8rem 1.2rem;
+}
+
+code {
+  padding: 0.3rem 0.5rem;
 }
 
 .posts-list {
@@ -122,4 +133,8 @@ pre {
 
 .post-date {
   color: #999;
+}
+
+#carbonads {
+  margin: 2rem auto;
 }

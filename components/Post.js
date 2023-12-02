@@ -5,8 +5,15 @@ import { Layout } from "./Layout";
 import Link from "next/link";
 
 const components = {
-  code_block: Prism,
-  ScriptEmbed: (props) => <script async src={props.src}></script>,
+  code_block: (props) => <Prism theme="vsLight" {...props} />,
+  ScriptEmbed: (props) => <script async {...props} />,
+  CarbonAd: () => (
+    <script
+      async
+      src="https://cdn.carbonads.com/carbon.js?serve=CKYIKK3U&placement=wildlyinaccuratecom"
+      id="_carbonads_js"
+    />
+  ),
 };
 
 export const Post = (props) => {

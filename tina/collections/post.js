@@ -35,10 +35,20 @@ export default {
           fields: [
             {
               name: "src",
-              label: "Source",
+              label: "src",
+              type: "string",
+            },
+            {
+              name: "id",
+              label: "id",
               type: "string",
             },
           ],
+        },
+        {
+          name: "CarbonAd",
+          label: "Carbon Ad Placement",
+          fields: [{ name: "id", label: "id", type: "string" }],
         },
       ],
     },

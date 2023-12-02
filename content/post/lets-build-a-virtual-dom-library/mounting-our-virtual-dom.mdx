@@ -3,7 +3,7 @@ title: Mounting our virtual DOM
 parent: content/post/lets-build-a-virtual-dom-library.mdx
 ---
 
-Creating a virtual DOM tree is relatively easy, but it's not very useful. What we really want is turn our VDOM tree into a real DOM in a HTML document. We want our example VDOM tree above to turn into something like this:
+Creating a virtual DOM tree was easy, but it's not very useful by itself. What we really want is turn our VDOM tree into a real DOM in a HTML document. Our goal is to write a function that takes a VDOM tree and mounts it to the real DOM. Using our example VDOM tree from the previous section, the result should look like this:
 
 ```html
 <div class="container">
@@ -12,7 +12,56 @@ Creating a virtual DOM tree is relatively easy, but it's not very useful. What w
 </div>
 ```
 
-We can write a surprisingly simple function that does exactly this, by mounting a VDOM tree onto a DOM node.
+<CarbonAd />
+
+We'll start by writing a function that takes a virtual DOM node, `vnode`, and mounts it to an existing DOM node, `parentDom`.
+
+```js
+function mount(vnode, parentDom) {
+    let domNode;
+
+    if (typeof vnode === "string" || typeof vnode === "number") {
+        // When the node is a string or number, we can insert a plain text node.
+        domNode = document.createTextNode(vnode);
+    } else {
+        // For vnode objects, we create a HTMLElement of the node's type.
+        domNode = document.createElement(vnode.type);
+    }
+
+    return domNode;
+}
+```
+
+Once again, this code is surprisingly simple. The beauty of the virtual DOM is that the `type` property maps directly to the `tagName` parameter of the `document.createElement` function. This means that we can create a DOM node of the correct type with a single line of code. If the vnode is a string or number, we can create a plain text node with `document.createTextNode`.
+
+So far this code only creates the DOM node based on `vnode.type`, but it doesn't do anything with `vnode.props` or `vnode.children`. Let's start by setting the props as attributes on the DOM node.
+
+```js
+function mount(vnode, parentDom) {
+    let domNode;
+
+    if (typeof vnode === "string" || typeof vnode === "number") {
+        // When the node is a string or number, we can insert a plain text node.
+        domNode = document.createTextNode(vnode);
+    } else {
+        // For vnode objects, we create a HTMLElement of the node's type.
+        domNode = document.createElement(vnode.type);
+
+        if (vnode.props) {
+            // All of the props are set as attributes on the HTMLElement.
+            for (const prop in vnode.props) {
+                domNode[prop] = vnode.props[prop];
+            }
+        }
+    }
+
+    return domNode;
+}
+```
+
+The virtual DOM's simplicity continues to shine here, because the `props` object maps directly to the DOM node's attributes. We don't need to translate any of the props; we can simply loop through them and set them as attributes on the HTMLElement.
+
+The final piece of the puzzle is to mount all of the children, and any of their children, and so on until the entire tree has been mounted. We can do this by recursively calling the `mount` function for each child.
 
 ```js
 // The mount function takes a vnode and mounts it to an existing "parent" DOM node
@@ -45,6 +94,8 @@ function mount(vnode, parentDom) {
 }
 ```
 
-The embed below shows this code in action. It works!
+And just like that, our function is finished! ... For now, anyway. We can see in the JSFiddle embed below that our `mount` function does exactly what we expect, and renders our virtual DOM into the real DOM. You can click on the **JavaScript** tab to view our VDOM library code, and the **HTML** tab to view our "application" code.
 
-<ScriptEmbed src="https://jsfiddle.net/wildlyinaccurate/uzbn4gw7/6/embed/result,html,js/" />
+[Next: Writing custom components &rarr;](/lets-build-a-virtual-dom-library/writing-custom-components)
+
+<ScriptEmbed src="https://jsfiddle.net/wildlyinaccurate/uzbn4gw7/12/embed/result,html,js/" />

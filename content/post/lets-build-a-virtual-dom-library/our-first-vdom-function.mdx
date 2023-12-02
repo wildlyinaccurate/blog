@@ -6,7 +6,7 @@ parent: content/post/lets-build-a-virtual-dom-library.mdx
 Now that we understand what the virtual DOM is, we can write our first function:
 
 ```js
-function createVNode(type, props, ...children) {
+function createVNode(type, props, children) {
     return {
         type,
         props,
@@ -15,9 +15,29 @@ function createVNode(type, props, ...children) {
 }
 ```
 
-This function seems redundant right now, because all it's doing is turning the function arguments into object properties. As we build out our library, this function will start to do more.
+This function probably seems so simple that it's almost not necessary - all it's doing is turning the function arguments into object properties. As we continue writing our virtual DOM library, this function will change and will have a few different variations. For now, we can just enjoy that it is so simple.
 
-For illustration purposes, let's build a simple VDOM:
+<CarbonAd />
+
+So how do we actually use this function? Let's start with something simple: a VDOM tree that represents a `<h1>` element containing the text `Hello, World!`.
+
+```js
+createVNode("h1", null, ["Hello, World!"]);
+```
+
+Simple! This function call will return a VDOM tree that looks like this:
+
+```js
+{
+    "type": "h1",
+    "props": null,
+    "children": [
+        "Hello, World!"
+    ]
+}
+```
+
+To make things interesting, let's build a VDOM tree with a bit more depth, and a combination of text and elements.
 
 ```js
 createVNode("div", { className: "container" }, [
@@ -30,7 +50,7 @@ createVNode("div", { className: "container" }, [
 ]);
 ```
 
-The output of this function should look something like this:
+And here's what the VDOM tree will look like:
 
 ```js
 {
@@ -65,4 +85,6 @@ The output of this function should look something like this:
 }
 ```
 
-[Next: Mounting our virtual DOM &rarr;](lets-build-a-virtual-dom-library/mounting-our-virtual-dom)
+Now we know how easy it is to build a virtual representation of a DOM tree. But this representation by itself is not very useful. In the next section we're going to write the code that mounts a VDOM tree into the real DOM.
+
+[Next: Mounting our virtual DOM &rarr;](/lets-build-a-virtual-dom-library/mounting-our-virtual-dom)

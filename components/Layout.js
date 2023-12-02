@@ -31,7 +31,7 @@ export const Layout = (props) => {
       <header className="band">
         <div className="wrapper">
           <h1 className="site-title">
-            <img src="structured-thoughts-53x42.png" />
+            <img src="/structured-thoughts-53x42.png" />
             The <i>Structured Thoughts</i> Blog
           </h1>
 
