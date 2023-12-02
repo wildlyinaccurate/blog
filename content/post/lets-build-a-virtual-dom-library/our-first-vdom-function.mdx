@@ -1,0 +1,68 @@
+---
+title: Our first VDOM function
+parent: content/post/lets-build-a-virtual-dom-library.mdx
+---
+
+Now that we understand what the virtual DOM is, we can write our first function:
+
+```js
+function createVNode(type, props, ...children) {
+    return {
+        type,
+        props,
+        children,
+    };
+}
+```
+
+This function seems redundant right now, because all it's doing is turning the function arguments into object properties. As we build out our library, this function will start to do more.
+
+For illustration purposes, let's build a simple VDOM:
+
+```js
+createVNode("div", { className: "container" }, [
+    createVNode("h1", null, ["Hello, World!"]),
+    createVNode("p", null, [
+        "We're building a ",
+        createVNode("small", null, ["(really simple)"]),
+        " virtual DOM library.",
+    ]),
+]);
+```
+
+The output of this function should look something like this:
+
+```js
+{
+    "type": "div",
+    "props": {
+        "className": "container"
+    },
+    "children": [
+        {
+            "type": "h1",
+            "props": null,
+            "children": [
+                "Hello, World!"
+            ]
+        },
+        {
+            "type": "p",
+            "props": null,
+            "children": [
+                "We're building a ",
+                {
+                    "type": "small",
+                    "props": null,
+                    "children": [
+                        "(really simple)"
+                    ]
+                },
+                " virtual DOM library."
+            ]
+        }
+    ]
+}
+```
+
+[Next: Mounting our virtual DOM &rarr;](lets-build-a-virtual-dom-library/mounting-our-virtual-dom)

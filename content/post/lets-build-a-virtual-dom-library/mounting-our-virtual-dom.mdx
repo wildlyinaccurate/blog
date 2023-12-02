@@ -1,0 +1,50 @@
+---
+title: Mounting our virtual DOM
+parent: content/post/lets-build-a-virtual-dom-library.mdx
+---
+
+Creating a virtual DOM tree is relatively easy, but it's not very useful. What we really want is turn our VDOM tree into a real DOM in a HTML document. We want our example VDOM tree above to turn into something like this:
+
+```html
+<div class="container">
+    <h1>Hello, World!</h1>
+    <p>We're building a <small>(really simple)</small> virtual DOM library.</p>
+</div>
+```
+
+We can write a surprisingly simple function that does exactly this, by mounting a VDOM tree onto a DOM node.
+
+```js
+// The mount function takes a vnode and mounts it to an existing "parent" DOM node
+function mount(vnode, parentDom) {
+    let domNode;
+
+    if (typeof vnode === "string" || typeof vnode === "number") {
+        // When the node is a string or number, we can insert a plain text node.
+        domNode = document.createTextNode(vnode);
+    } else {
+        // For vnode objects, we create a HTMLElement of the node's type.
+        domNode = document.createElement(vnode.type);
+
+        if (vnode.props) {
+            // All of the props are set as attributes on the HTMLElement.
+            for (const prop in vnode.props) {
+                domNode[prop] = vnode.props[prop];
+            }
+        }
+
+        if (vnode.children) {
+            // Any children go through the same process recursively until we have
+            // mounted the whole tree.
+            vnode.children.forEach((child) => mount(child, domNode));
+        }
+    }
+
+    // When we're finished, append the new DOM node to the parent.
+    parentDom.appendChild(domNode);
+}
+```
+
+The embed below shows this code in action. It works!
+
+<ScriptEmbed src="https://jsfiddle.net/wildlyinaccurate/uzbn4gw7/6/embed/result,html,js/" />

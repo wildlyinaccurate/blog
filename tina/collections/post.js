@@ -13,24 +13,6 @@ export default {
       name: "title",
     },
     {
-      type: "datetime",
-      label: "Published Date",
-      name: "created_at",
-      ui: {
-        dateFormat: "MMMM DD YYYY",
-        timeFormat: "hh:mm A",
-      },
-    },
-    {
-      type: "datetime",
-      label: "Last Updated Date",
-      name: "updated_at",
-      ui: {
-        dateFormat: "MMMM DD YYYY",
-        timeFormat: "hh:mm A",
-      },
-    },
-    {
       type: "rich-text",
       label: "Post Body",
       name: "body",
@@ -59,6 +41,30 @@ export default {
           ],
         },
       ],
+    },
+    {
+      label: "Parent Post",
+      name: "parent",
+      type: "reference",
+      collections: ["post"],
+    },
+    {
+      type: "datetime",
+      label: "Published Date",
+      name: "created_at",
+      ui: {
+        dateFormat: "MMMM DD YYYY",
+        timeFormat: "hh:mm A",
+      },
+    },
+    {
+      type: "datetime",
+      label: "Last Updated Date",
+      name: "updated_at",
+      ui: {
+        dateFormat: "MMMM DD YYYY",
+        timeFormat: "hh:mm A",
+      },
     },
   ],
   indexes: [
