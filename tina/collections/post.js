@@ -11,6 +11,7 @@ export default {
       type: "string",
       label: "Title",
       name: "title",
+      isTitle: true,
     },
     {
       type: "rich-text",
