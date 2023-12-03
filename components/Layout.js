@@ -31,8 +31,12 @@ export const Layout = (props) => {
       <header className="band">
         <div className="wrapper">
           <h1 className="site-title">
-            <img src="/structured-thoughts-53x42.png" />
-            The <i>Structured Thoughts</i> Blog
+            <a href="/">
+              <img src="/structured-thoughts-53x42.png" />
+            </a>
+            <a href="/">
+              The <i>Structured Thoughts</i> Blog
+            </a>
           </h1>
 
           <div className="nav">
