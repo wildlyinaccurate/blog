@@ -46,6 +46,22 @@ export default {
           ],
         },
         {
+          name: "JSFiddleEmbed",
+          label: "JSFiddle Embed",
+          fields: [
+            {
+              name: "src",
+              label: "src",
+              type: "string",
+            },
+            {
+              name: "height",
+              label: "height",
+              type: "number",
+            },
+          ],
+        },
+        {
           name: "CarbonAd",
           label: "Carbon Ad Placement",
           fields: [{ name: "id", label: "id", type: "string" }],

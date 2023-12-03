@@ -111,19 +111,35 @@ main {
   margin-bottom: 60px;
 }
 
-pre, code {
+pre,
+code,
+.jsfiddle-embed {
   background-color: #f2f2f2 !important;
   border-radius: 0.5rem;
-  color: #403f53;
   font-size: 1rem;
 }
 
 pre {
+  color: #403f53;
+  margin: 1rem 0;
   padding: 0.8rem 1.2rem;
 }
 
 code {
+  color: #a31515;
   padding: 0.3rem 0.5rem;
+}
+
+.jsfiddle-embed {
+  margin: 1rem auto;
+  padding: 1rem;
+  width: 80%;
+}
+
+@media (max-width: 800px) {
+  .jsfiddle-embed {
+    width: 100%;
+  }
 }
 
 .posts-list {

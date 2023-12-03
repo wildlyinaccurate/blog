@@ -7,6 +7,16 @@ import Link from "next/link";
 const components = {
   code_block: (props) => <Prism theme="vsLight" {...props} />,
   ScriptEmbed: (props) => <script async {...props} />,
+  JSFiddleEmbed: (props) => (
+    <div className="jsfiddle-embed">
+      <iframe
+        width="100%"
+        height={props.height || 500}
+        src={props.src}
+        frameborder="0"
+      />
+    </div>
+  ),
   CarbonAd: () => (
     <script
       async
