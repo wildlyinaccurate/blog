@@ -5,6 +5,8 @@ parent: content/post/lets-build-a-virtual-dom-library.mdx
 
 So far our VDOM library can render HTML elements. We could render a full web application like this, but that's not much different to writing HTML by hand. For our virtual DOM library to be really powerful, we need to be able to write code that has state and reacts to user input. This is where **components** come in. Components are sort of like custom elements. They let us break our code into reusable chunks, and more importantly they let us attach **state** and **behaviour** to our elements.
 
+<CarbonAd />
+
 In our library we are going to start by implementing **class components**. The first component we'll aim to support is a `Counter`. This component will render a number and a button. When you click the button, the number will increase. The code for the `Counter` component will look like this:
 
 ```js
