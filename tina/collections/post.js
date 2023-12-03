@@ -12,6 +12,7 @@ export default {
       label: "Title",
       name: "title",
       isTitle: true,
+      required: true,
     },
     {
       type: "rich-text",
