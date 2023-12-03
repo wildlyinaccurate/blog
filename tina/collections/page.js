@@ -11,8 +11,6 @@ export default {
       type: "string",
       label: "Title",
       name: "title",
-      isTitle: true,
-      required: true,
     },
     {
       name: "body",
