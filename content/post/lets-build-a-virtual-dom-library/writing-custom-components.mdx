@@ -1,0 +1,98 @@
+---
+title: Writing custom components
+parent: content/post/lets-build-a-virtual-dom-library.mdx
+---
+
+So far our VDOM library can render HTML elements. We could render a full web application like this, but that's not much different to writing HTML by hand. For our virtual DOM library to be really powerful, we need to be able to write code that has state and reacts to user input. This is where **components** come in. Components are sort of like custom elements. They let us break our code into reusable chunks, and more importantly they let us attach **state** and **behaviour** to our elements.
+
+In our library we are going to start by implementing **class components**. The first component we'll aim to support is a `Counter`. This component will render a number and a button. When you click the button, the number will increase. The code for the `Counter` component will look like this:
+
+```js
+class Counter extends Component {
+    state = { count: 0 };
+
+    constructor(props) {
+        super(props);
+    }
+
+    increment() {
+        this.setState({ count: this.state.count + 1 });
+    }
+
+    render() {
+        // The button text can be customised with the `buttonText` prop.
+        const buttonText = this.props.buttonText || "+1";
+
+        return createVNode("div", null, [
+            `Counter value: ${this.state.count} `,
+            createVNode("button", { onClick: () => this.increment() }, [
+                buttonText,
+            ]),
+        ]);
+    }
+}
+```
+
+Our goal is for this component to render some HTML that looks like this:
+
+```html
+<div>
+    Counter value: 0
+    <button>+1</button>
+</div>
+```
+
+Notice how our `Counter` class is extending a base `Component` class. This class will come from our VDOM library, and it will handle a lot of the state management and re-rendering that you would expect from a component. For now though, it can be very simple:
+
+```js
+class Component {
+    constructor(props) {
+        // Initialize the component props for each new instance
+        this.props = props || {};
+    }
+
+    // The render function will be implemented by the components themselves
+    render() {}
+}
+```
+
+Let's see what happens when we try to mount some `Counter` components to the DOM. We'll use the same `app()` function pattern that we used in the previous section.
+
+```js
+function app() {
+    return createVNode("div", { className: "container" }, [
+        createVNode(Counter),
+        createVNode(Counter, { buttonText: "Add One" }),
+    ]);
+}
+
+mount(app(), document.getElementById("app"));
+
+// Error!
+// Uncaught DOMException: Failed to execute 'createElement' on 'Document':
+// The tag name provided ('<our Counter code>') is not a valid name.
+```
+
+We expected this to happen. When we give our component to the `mount()` function, it tries to create a DOM node using the component as the tag name. We need to write some extra code to support rendering components. Instead of calling `document.createElement(vnode.type)`, we will add some logic to handle components:
+
+```js
+if (typeof vnode.type === "function") {
+    // If the vnode type is a function, we can assume it is a component.
+    const Component = vnode.type;
+
+    // We create an instance of the component with the props passed in.
+    const instance = new Component(vnode.props);
+
+    // Then we call the component's render() function which returns a VDOM tree.
+    // Just like we do with child components, this VDOM tree is passed recursively
+    // into the mount function.
+    domNode = mount(instance.render(), parentDom);
+} else {
+    // For everything else, we assume vnode.type is a tag name and create a HTMLElement.
+    domNode = document.createElement(vnode.type);
+}
+```
+
+[Next: Handling state and events &rarr;](lets-build-a-virtual-dom-library/handling-state-and-events)
+
+<ScriptEmbed src="https://jsfiddle.net/wildlyinaccurate/jx283sz5/4//embed/result,html,js/" />

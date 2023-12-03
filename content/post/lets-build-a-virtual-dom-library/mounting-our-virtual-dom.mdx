@@ -91,11 +91,32 @@ function mount(vnode, parentDom) {
 
     // When we're finished, append the new DOM node to the parent.
     parentDom.appendChild(domNode);
+
+    return domNode;
 }
 ```
 
-And just like that, our function is finished! ... For now, anyway. We can see in the JSFiddle embed below that our `mount` function does exactly what we expect, and renders our virtual DOM into the real DOM. You can click on the **JavaScript** tab to view our VDOM library code, and the **HTML** tab to view our "application" code.
+And just like that, our function is finished! ... For now, anyway. Let's take a quick look at how we would use this function, and then try it out for real.
+
+```js
+// Our "application" code is just a function that returns a VDOM tree.
+function app() {
+    return createVNode("div", { className: "container" }, [
+        createVNode("h1", null, ["Hello, World!"]),
+        createVNode("p", null, [
+            "We're building a ",
+            createVNode("small", null, ["(really simple)"]),
+            " virtual DOM library.",
+        ]),
+    ]);
+}
+
+// We retrieve the VDOM tree by calling app() and mount it to an existing DOM node.
+mount(app(), document.getElementById("app"));
+```
+
+The JSFiddle embed below shows this code in action. Our `mount` function does exactly what we expect, and renders our virtual DOM into the real DOM. You can click on the **JavaScript** tab to view our VDOM library code, and the **HTML** tab to view our "application" code.
 
 [Next: Writing custom components &rarr;](/lets-build-a-virtual-dom-library/writing-custom-components)
 
-<ScriptEmbed src="https://jsfiddle.net/wildlyinaccurate/uzbn4gw7/12/embed/result,html,js/" />
+<ScriptEmbed src="https://jsfiddle.net/wildlyinaccurate/uzbn4gw7/13/embed/result,html,js/" />
