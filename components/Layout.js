@@ -56,14 +56,16 @@ export const Layout = (props) => {
       </div>
 
       <footer className="band">
-        <small>
-          If you like what you're reading and you want to show your
-          appreciation, you can{" "}
-          <a href="https://ko-fi.com/thestructuredthoughtsblog">
-            support me on ko-fi
-          </a>
-          .
-        </small>
+        <div className="wrapper">
+          <small>
+            If you like what you're reading and you want to show your
+            appreciation, you can{" "}
+            <a href="https://ko-fi.com/thestructuredthoughtsblog">
+              support me on ko-fi
+            </a>
+            .
+          </small>
+        </div>
       </footer>
 
       <script
