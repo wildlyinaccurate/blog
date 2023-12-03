@@ -23,7 +23,10 @@ export default function PageOrPost(props) {
   return "Not Found";
 }
 
-export const getStaticPaths = getStaticPathsForPostOrPage("breadcrumbs");
+export const getStaticPaths = getStaticPathsForPostOrPage(
+  (x) => x.node._sys.breadcrumbs,
+  (x) => x.node._sys.breadcrumbs.length > 1
+);
 export const getStaticProps = getStaticPropsForPostOrPage(
-  (params) => `${params.filename.join("/")}.mdx`
+  (filename) => `${filename.join("/")}.mdx`
 );

@@ -19,12 +19,18 @@ export default function PageOrPost(props) {
   return "Not Found";
 }
 
-export const getStaticPaths = getStaticPathsForPostOrPage("filename");
+export const getStaticPaths = getStaticPathsForPostOrPage(
+  (x) => x.node._sys.filename,
+  (x) => x.node._sys.breadcrumbs.length === 1
+);
 export const getStaticProps = getStaticPropsForPostOrPage(
-  (params) => `${params.filename}.mdx`
+  (filename) => `${filename}.mdx`
 );
 
-export function getStaticPathsForPostOrPage(segment) {
+export function getStaticPathsForPostOrPage(
+  getFilenameParam,
+  filterEdges = () => true
+) {
   return async function getStaticPaths() {
     const postsQuery = await client.queries.postConnection();
     const pagesQuery = await client.queries.pageConnection();
@@ -34,10 +40,10 @@ export function getStaticPathsForPostOrPage(segment) {
       ...pagesQuery.data.pageConnection.edges,
     ];
 
-    const paths = edges.map((x) => {
+    const paths = edges.filter(filterEdges).map((x) => {
       return {
         params: {
-          filename: x.node._sys[segment],
+          filename: getFilenameParam(x),
         },
       };
     });
@@ -51,7 +57,7 @@ export function getStaticPathsForPostOrPage(segment) {
 
 export function getStaticPropsForPostOrPage(makeRelativePath) {
   return async function getStaticProps({ params }) {
-    const relativePath = makeRelativePath(params);
+    const relativePath = makeRelativePath(params.filename);
     const { data, query, variables } = await client.queries
       .post({
         relativePath,
