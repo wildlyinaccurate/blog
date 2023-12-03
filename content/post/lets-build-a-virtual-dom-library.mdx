@@ -23,7 +23,7 @@ You have hopefully already heard of the term *virtual DOM*, or *VDOM*. It's a co
 
 The original goal of the virtual DOM concept was to allow web developers to render updates to a web page quickly, without making expensive or unnecessary DOM manipulations. This reasoning does not necessarily hold up today, since web browsers have become very efficient at performing DOM manipulations. Regardless, the virtual DOM is still a popular and well-understood rendering mechanism.
 
-All virtual DOM implementations work slightly differently, but the basic concept is the same: plain JavaScript objects are used to represent a tree of virtual DOM nodes. These virtual nodes, or `vnodes`, are relatively simple:
+All virtual DOM implementations work slightly differently, but the basic concept is the same: plain JavaScript objects are used to represent a tree of virtual DOM nodes. These virtual nodes, or vnodes, are relatively simple:
 
 ```js
 const vnode = {
@@ -35,15 +35,15 @@ const vnode = {
 }
 ```
 
-There are the three basic attributes of a `vnode`:
+There are the three basic attributes of a vnode:
 
 * **type**: Sometimes called **tag**, this is the type of DOM node that will be rendered - often an HTML element name.
 * **props**: These are properties that can be set on the DOM node. These are the property names in the **JavaScript DOM API**, which are sometimes different to the corresponding HTML attribute name. The most common example of this is the `class` attribute in HTML is set with the `className` property in JavaScript.
-* **children**: A list of more `vnodes`.
+* **children**: A list of more vnodes.
 
 With this simple object structure, a virtual DOM renderer can traverse a VDOM tree and create a real DOM from it. This process is usually called **mounting**. To avoid unnecessary changes to the real DOM, most VDOM renderers can compare a VDOM tree against an already-mounted DOM and update just the parts that have changed. React calls this process **reconciliation**, but other libraries call it **diffing** or **patching**.
 
-The lifecycle of a virtual DOM library is therefore quite simple: some web application has components that render a VDOM tree. The VDOM library mounts or patches that tree into the real DOM. The user interacts with the real DOM, triggering events that the web application reacts to, which starts the whole cycle again.
+The lifecycle of a virtual DOM library is therefore quite simple: a web application is made up of components that render a VDOM tree. The VDOM library mounts or patches that tree into the real DOM. The user interacts with the real DOM, triggering events that change the state of the web application's components. The virtual DOM library re-renders the components, and the whole cycle starts over.
 
 ```
                                        React to DOM events
@@ -57,5 +57,15 @@ The lifecycle of a virtual DOM library is therefore quite simple: some web appli
 │                    │                │                    │                 │                    │
 └────────────────────┘                └────────────────────┘                 └────────────────────┘
 ```
+
+Before we get our hands dirty and write some code, I need to set your expectations correctly:
+
+- We **are** going to build a virtual DOM library that can render a relatively complex web application.
+- It **will not** handle any edge cases.
+- It **will not** be fast or efficient.
+- You **should definitely not** use it to build a real web application.
+- You **will** finish this guide with a better understanding of how virtual DOM-based libraries like React and Vue work.
+
+If that sounds reasonable, then let's get started!
 
 [Next: Our first VDOM function &rarr;](/lets-build-a-virtual-dom-library/our-first-vdom-function)

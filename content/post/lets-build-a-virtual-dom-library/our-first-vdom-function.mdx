@@ -37,7 +37,13 @@ Simple! This function call will return a VDOM tree that looks like this:
 }
 ```
 
-To make things interesting, let's build a VDOM tree with a bit more depth, and a combination of text and elements.
+Our goal is to turn this VDOM tree into a real DOM that looks like this:
+
+```html
+<h1>Hello, World!</h1>
+```
+
+In theory there is no limit to how deep a VDOM tree can be nested. We can create a more complex example that has more nesting, and combines text nodes with other vnodes:
 
 ```js
 createVNode("div", { className: "container" }, [
@@ -50,7 +56,7 @@ createVNode("div", { className: "container" }, [
 ]);
 ```
 
-And here's what the VDOM tree will look like:
+This code will generate a VDOM tree that looks like this:
 
 ```js
 {
@@ -85,6 +91,6 @@ And here's what the VDOM tree will look like:
 }
 ```
 
-Now we know how easy it is to build a virtual representation of a DOM tree. But this representation by itself is not very useful. In the next section we're going to write the code that mounts a VDOM tree into the real DOM.
+This super-simple implementation of `createVNode` is powerful enough to handle everything we need to do for now. It helps us build a virtual representation of a DOM tree where we can control which attributes are on each node and what (if any) child nodes each node has. It's useful to see the virtual DOM objects that our library will be using, but these objects alone are not very useful. In the next section we're going to write the code that mounts these VDOM tree objects into the real DOM.
 
 [Next: Mounting our virtual DOM &rarr;](/lets-build-a-virtual-dom-library/mounting-our-virtual-dom)
