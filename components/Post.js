@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const components = {
   code_block: (props) => <Prism theme="vsLight" {...props} />,
-  ScriptEmbed: (props) => <script async {...props} />,
+  ScriptEmbed: (props) => <script defer {...props} />,
   JSFiddleEmbed: (props) => (
     <div className="jsfiddle-embed">
       <iframe
@@ -18,11 +18,13 @@ const components = {
     </div>
   ),
   CarbonAd: () => (
-    <script
-      async
-      src="https://cdn.carbonads.com/carbon.js?serve=CKYIKK3U&placement=wildlyinaccuratecom"
-      id="_carbonads_js"
-    />
+    <div className="ad-container">
+      <script
+        defer
+        src="https://cdn.carbonads.com/carbon.js?serve=CKYIKK3U&placement=wildlyinaccuratecom"
+        id="_carbonads_js"
+      />
+    </div>
   ),
 };
 
