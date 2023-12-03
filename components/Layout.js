@@ -55,7 +55,16 @@ export const Layout = (props) => {
         <main>{props.children}</main>
       </div>
 
-      <footer className="band" />
+      <footer className="band">
+        <small>
+          If you like what you're reading and you want to show your
+          appreciation, you can{" "}
+          <a href="https://ko-fi.com/thestructuredthoughtsblog">
+            support me on ko-fi
+          </a>
+          .
+        </small>
+      </footer>
 
       <script
         dangerouslySetInnerHTML={{
