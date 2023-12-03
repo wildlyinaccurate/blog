@@ -70,10 +70,10 @@ mount(app(), document.getElementById("app"));
 
 // Error!
 // Uncaught DOMException: Failed to execute 'createElement' on 'Document':
-// The tag name provided ('<our Counter code>') is not a valid name.
+// The tag name provided ('class Counter extends Component {...}') is not a valid name.
 ```
 
-We expected this to happen. When we give our component to the `mount()` function, it tries to create a DOM node using the component as the tag name. We need to write some extra code to support rendering components. Instead of calling `document.createElement(vnode.type)`, we will add some logic to handle components:
+This is not completely unexpected. So far our `mount()` function can only handle vnodes that have a valid HTML tag name as their `type` property. To handle components, we'll need to first call their `render()` function until we end up with a regular vnode. In JavaScript classes are actually just functions, so we can add an `if (typeof vnode.type === "function")` branch to handle components.
 
 ```js
 if (typeof vnode.type === "function") {
@@ -93,7 +93,7 @@ if (typeof vnode.type === "function") {
 }
 ```
 
-[Next: Handling state and events &rarr;](lets-build-a-virtual-dom-library/handling-state-and-events)
+With this small change, our VDOM library can now render custom components. This is a good step in the right direction, but our buttons don't actually do anything yet.
 
 <JSFiddleEmbed src="https://jsfiddle.net/wildlyinaccurate/jx283sz5/6/embedded/result,html,js/" />
 
