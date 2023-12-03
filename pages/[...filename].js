@@ -7,6 +7,10 @@ import {
   getStaticPropsForPostOrPage,
 } from "./[filename]";
 
+export const config = {
+  unstable_runtimeJS: false,
+};
+
 export default function PageOrPost(props) {
   const { data } = useTina({
     query: props.query,

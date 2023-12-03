@@ -4,6 +4,10 @@ import { useTina } from "tinacms/dist/react";
 import { Layout } from "../components/Layout";
 import { client } from "../tina/__generated__/client";
 
+export const config = {
+  unstable_runtimeJS: false,
+};
+
 export default function Home(props) {
   const { data } = useTina({
     query: props.query,

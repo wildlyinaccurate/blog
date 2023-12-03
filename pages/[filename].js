@@ -3,6 +3,10 @@ import { Page } from "../components/Page";
 import { Post } from "../components/Post";
 import { client } from "../tina/__generated__/client";
 
+export const config = {
+  unstable_runtimeJS: false,
+};
+
 export default function PageOrPost(props) {
   const { data } = useTina({
     query: props.query,
@@ -50,7 +54,7 @@ export function getStaticPathsForPostOrPage(
 
     return {
       paths,
-      fallback: "blocking",
+      fallback: false,
     };
   };
 }
