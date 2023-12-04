@@ -49,11 +49,15 @@ Notice how our `Counter` class is extending a base `Component` class. This class
 ```js
 class Component {
     constructor(props) {
-        // Initialize the component props for each new instance
+        // Initialize props and state for each new instance
         this.props = props || {};
+        this.state = {};
     }
 
-    // The render function will be implemented by the components themselves
+    // We will implement this later
+    setState(newState) {}
+
+    // This will be implemented by the extending component
     render() {}
 }
 ```
@@ -86,7 +90,7 @@ if (typeof vnode.type === "function") {
     const instance = new Component(vnode.props);
 
     // Then we call the component's render() function which returns a VDOM tree.
-    // Just like we do with child components, this VDOM tree is passed recursively
+    // Just like we do with child nodes, this VDOM tree is passed recursively
     // into the mount function.
     domNode = mount(instance.render(), parentDom);
 } else {

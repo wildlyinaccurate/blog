@@ -64,7 +64,6 @@ The virtual DOM's simplicity continues to shine here, because the `props` object
 The final piece of the puzzle is to mount all of the children, and any of their children, and so on until the entire tree has been mounted. We can do this by recursively calling the `mount` function for each child.
 
 ```js
-// The mount function takes a vnode and mounts it to an existing "parent" DOM node
 function mount(vnode, parentDom) {
     let domNode;
 

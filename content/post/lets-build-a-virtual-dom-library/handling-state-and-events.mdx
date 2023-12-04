@@ -3,6 +3,8 @@ title: Handling state and events
 parent: content/post/lets-build-a-virtual-dom-library.mdx
 ---
 
-Hey, thanks for reading this far! This guide is still a work in progress, and this part isn't quite finished. You can [follow me on Twitter](https://twitter.com/Joseph_Wynn) to be notified when the guide is complete.
+In this next section, we're going to implement a **very naïve** and **very inefficient** mechanism for handling state updates within our components. The basic idea will be to make our base `Component` class trigger a re-render whenever the `setState` method is called, and replace the existing component DOM with the new VDOM tree. This is quite wasteful and sort-of defeats the purpose of a virtual DOM library, but we're going to build it anyway as a learning exercise. In the next section, we'll implement a reconciliation algorithm, which will make our updates much more efficient.
 
 <CarbonAd />
+
+The first thing we're going to do is modify our `createVNode()` function.
