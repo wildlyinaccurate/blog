@@ -13,7 +13,7 @@ const components = {
         width="100%"
         height={props.height || 500}
         src={props.src}
-        frameborder="0"
+        frameBorder="0"
       />
     </div>
   ),
