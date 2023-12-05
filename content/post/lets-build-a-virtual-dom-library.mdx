@@ -36,11 +36,11 @@ const vnode = {
 }
 ```
 
-There are the three basic attributes of a vnode:
+These are the three basic attributes of a vnode:
 
-* **type**: Sometimes called **tag**, this is the type of DOM node that will be rendered - often an HTML element name.
-* **props**: These are properties that can be set on the DOM node. These are the property names in the **JavaScript DOM API**, which are sometimes different to the corresponding HTML attribute name. The most common example of this is the `class` attribute in HTML is set with the `className` property in JavaScript.
-* **children**: A list of more vnodes.
+* **type**: Sometimes called **tag**, this is the type of DOM node that will be rendered - often an HTML element name, although as we will find out later, this can be a custom component too.
+* **props**: These are properties that can be set on the DOM node. These props are often named after properties in the **JavaScript DOM API**, which are sometimes different to the corresponding HTML attribute name. The most common example of this is the `className` prop which represents the `class` attribute in HTML.
+* **children**: A list of more vnodes. A value of `null` is also acceptable to represent a vnode with no child nodes.
 
 With this simple object structure, a virtual DOM renderer can traverse a VDOM tree and create a real DOM from it. This process is usually called **mounting**. To avoid unnecessary changes to the real DOM, most VDOM renderers can compare a VDOM tree against an already-mounted DOM and update just the parts that have changed. React calls this process **reconciliation**, but other libraries call it **diffing** or **patching**.
 
