@@ -3,6 +3,81 @@ title: Handling styles
 parent: content/post/lets-build-a-virtual-dom-library.mdx
 ---
 
-Hey, thanks for reading this far! This guide is still a work in progress, and this part isn't quite finished. You can [follow me on Twitter](https://twitter.com/Joseph_Wynn) to be notified when the guide is complete.
+So far our VDOM library supports styling elements via the `className` prop, but sometimes you need to apply styles directly to an element. There are two ways you could do this: by specifying a CSS string, or by specifying an object of CSS properties.
+
+```js
+{
+    // CSS strings are valid values for the `style` prop
+    style: "text-align: center;"
+
+    // So are objects of CSS properties
+    style: {
+        color: "blue",
+        fontWeight: bold,
+    }
+}
+```
 
 <CarbonAd />
+
+I'm going to modify our example application to add some styles to the elements.
+
+```js
+return createVNode(
+    "div",
+    { className: "container", style: "text-align: center" },
+    [
+        createVNode("h1", null, ["Hello, World!"]),
+        createVNode("p", { style: { color: "blue" } }, [
+            "We're building a ",
+            createVNode("small", { style: { fontWeight: "bold" } }, [
+                "(really simple)",
+            ]),
+            " virtual DOM library.",
+        ]),
+    ]
+);
+```
+
+Let's see what happens when we mount this with the code we have so far:
+
+<JSFiddleEmbed src="https://jsfiddle.net/wildlyinaccurate/j3et6yg9/1/embedded/result,html,js/" />
+
+The string styles are applied, but the object styles are not. We'll have to write some more code to support them. The first thing we'll do is create a new `setProperty()` function where we can start to handle the different edge cases. Our `mount()` function will now call `setProperty()` rather than setting the props directly on the DOM node:
+
+```js
+if (vnode.props) {
+    for (const prop in vnode.props) {
+        setProperty(domNode, prop, vnode.props[prop]);
+    }
+}
+```
+
+Now we can write the `setProperty()` function with some extra logic to handle the `style` prop.
+
+```js
+function setProperty(domNode, prop, value) {
+    if (prop === "style") {
+        if (typeof value === "string") {
+            // Set string styles on the cssText property
+            domNode.style.cssText = value;
+        } else {
+            // Set object styles on the style object
+            for (const styleProp in value) {
+                domNode.style[styleProp] = value[styleProp];
+            }
+        }
+    } else {
+        // For all other props, we can set them directly on the DOM node.
+        domNode[prop] = value;
+    }
+}
+```
+
+With those changes, the styles in our example application are being applied correctly.
+
+<JSFiddleEmbed src="https://jsfiddle.net/wildlyinaccurate/j3et6yg9/4/embedded/result,html,js/" />
+
+In the next section we're going to cover one of the most (maybe _the most_) important parts of any front-end library: custom components.
+
+[Next: Writing custom components &rarr;](/lets-build-a-virtual-dom-library/writing-custom-components)
