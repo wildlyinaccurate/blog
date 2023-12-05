@@ -10,16 +10,17 @@ This guide is intended to be read in order, but the sections are listed below in
 0. What is a virtual DOM?
 0. [Our first VDOM function](lets-build-a-virtual-dom-library/our-first-vdom-function)
 0. [Mounting our virtual DOM](lets-build-a-virtual-dom-library/mounting-our-virtual-dom)
+0. [Handling styles (coming soon)](lets-build-a-virtual-dom-library/handling-styles)
 0. [Writing custom components](lets-build-a-virtual-dom-library/writing-custom-components)
 0. [Handling state and events](lets-build-a-virtual-dom-library/handling-state-and-events)
-0. [Reconciliation, or patching the DOM](lets-build-a-virtual-dom-library/reconciliation-or-patching-the-dom)
-0. [What about JSX?](lets-build-a-virtual-dom-library/what-about-jsx)
+0. [Reconciliation, or patching the DOM (coming soon)](lets-build-a-virtual-dom-library/reconciliation-or-patching-the-dom)
+0. [What about JSX? (coming soon)](lets-build-a-virtual-dom-library/what-about-jsx)
 
 <CarbonAd />
 
 ### What is a virtual DOM?
 
-You have hopefully already heard of the term *virtual DOM*, or *VDOM*. It's a concept where a virtual representation of [the Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) is built up in-memory, and then later synchronised with the "real" DOM. The VDOM concept was pioneered by React, and has since been used as the basis of many other frameworks' rendering systems including Vue.
+You have hopefully already heard of the term *virtual DOM*, or *VDOM*. It's a concept where a virtual representation of [the Document Object Model (DOM)](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) is built in-memory, and then later synchronised with the "real" DOM. The VDOM concept was pioneered by React, and has since been used as the basis of many other frameworks' rendering systems including Vue.
 
 The original goal of the virtual DOM concept was to allow web developers to render updates to a web page quickly, without making expensive or unnecessary DOM manipulations. This reasoning does not necessarily hold up today, since web browsers have become very efficient at performing DOM manipulations. Regardless, the virtual DOM is still a popular and well-understood rendering mechanism.
 

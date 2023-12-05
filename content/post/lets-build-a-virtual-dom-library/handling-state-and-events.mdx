@@ -7,4 +7,122 @@ In this next section, we're going to implement a **very naïve** and **very inef
 
 <CarbonAd />
 
-The first thing we're going to do is modify our `createVNode()` function.
+The first thing we're going to do is update the `createVNode()` function. All we need to do right now is add a new property to every vnode called `_dom` which we will use to keep track of the real DOM node associated with each vnode.
+
+```js
+function createVNode(type, props, children) {
+    return {
+        type,
+        props,
+        children,
+        _dom: null,
+    };
+}
+```
+
+You'll see why this new `_dom` property is necessary when we write a new `update()` function. This function is responsible for taking an existing vnode and replacing it with a new vnode.
+
+```js
+function update(prevVNode, nextVNode, parentDom) {
+    // Mount the new VDOM tree into the parent DOM node.
+    const newDom = mount(nextVNode, parentDom);
+
+    // Replace the old DOM node with the new one.
+    parentDom.replaceChild(newDom, prevVNode._dom);
+}
+```
+
+Very simple! This is the function our `Component` class will use to update its DOM whenever its state changes. This version of `update()` has one big problem though: when we call `mount(nextVNode, parentDom)`, we are mounting the new DOM node _alongside the old one_ before the old one is removed. This is quite inefficient because the browser could choose to [reflow](https://developer.mozilla.org/en-US/docs/Glossary/Reflow) the page. It would be better if we could mount the new DOM node somewhere temporary before calling `parentDom.replaceChild()`. This is where [**document fragments**](https://developer.mozilla.org/en-US/docs/Web/API/Document/createDocumentFragment) come in.
+
+A document fragment is a DOM node that is stored in memory and never written to the document's DOM tree. When a fragment is appended to the DOM tree, it is replaced by its children. What this means is we can mount our new VDOM tree into a fragment, and replace the old DOM node with that fragment. The final version of our `update()` function will look like this:
+
+```js
+function update(prevVNode, nextVNode, parentDom) {
+    // Create a new document fragment and mount the new VDOM tree into it.
+    const fragment = document.createDocumentFragment();
+    const newDom = mount(nextVNode, fragment);
+
+    // Now we can replace the old DOM node with the new DOM node.
+    parentDom.replaceChild(fragment, prevVNode._dom);
+}
+```
+
+Now we can update our base `Component` class to use this new function to react to state changes. Read the comments in the new code to see what has changed since the last version.
+
+```js
+class Component {
+    constructor(props) {
+        this.props = props || {};
+        this.state = {};
+
+        // Keep track of the parent DOM node and the current VDOM tree so that
+        // we can call the update() function with them.
+        this._parentDom = null;
+        this._currentVNode = null;
+
+        // Keep track of any pending state changes.
+        this._nextState = null;
+    }
+
+    _updateComponent() {
+        // Switch the instance to use the new state, and clear _nextState to indicate
+        // there are no more pending state changes.
+        this.state = this._nextState;
+        this._nextState = null;
+
+        // Render the component with the new state.
+        const nextVNode = this.render();
+
+        // Give the update function the old & new VDOM trees, and the parent DOM node.
+        update(this._currentVNode, nextVNode, this._parentDom);
+
+        // Store the new VDOM tree on the instance for next time.
+        this._currentVNode = nextVNode;
+    }
+
+    setState(newState) {
+        // Merge the new state with the old state. The spread operator ensures
+        // we copy the values rather than modifying the existing objects.
+        this._nextState = { ...this.state, ...newState };
+
+        // Update the component.
+        this._updateComponent();
+    }
+
+    // This will be implemented by the extending component
+    render() {}
+}
+```
+
+The `_updateComponent` function relies on the `._parentDom` and `._currentVNode` properties being set on the component. We can modify the `createComponentNode()` function to take care of that.
+
+```js
+function createComponentNode(vnode, parentDom) {
+    const Component = vnode.type;
+
+    // Create an instance of the component with the props passed in, and call
+    // the component's render() function to get its VDOM tree.
+    const instance = new Component(vnode.props);
+    const newVNode = instance.render();
+
+    // Store the component's parent DOM and VDOM tree on the instance for
+    // future updates.
+    instance._currentVNode = newVNode;
+    instance._parentDom = parentDom;
+
+    // Now that we have a "regular" vdom tree, we can pass it back to mount()
+    return mount(newVNode, parentDom);
+}
+```
+
+The final thing to do is make sure the `mount()` function sets the `_dom` property on every vnode so that the `update()` function can access it. You can see the final version of `mount()` in the JSFiddle below.
+
+<JSFiddleEmbed src="https://jsfiddle.net/wildlyinaccurate/uxct17nr/2//embedded/result,html,js/" />
+
+## What about events?
+
+You might have noticed that we haven't added any code to handle events, and yet the component responds to events just fine. Why is that? To be honest with you, it's because we've taken a shortcut. Another thing you might have noticed is that the `Counter` component sets event handlers on its button with the `onclick` property, whereas most virtual DOM libraries would use the `onClick` property (note the capital `C` in `onClick`).
+
+Other virtual DOM libraries use the non-standard `onClick` naming convention so that they can control how the event handlers are attached to the DOM. React implements its own synthetic event system, and other libraries like Preact use `addEventListener()` to attach the event handler. The shortcut we've taken is to use [HTML event handler attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes#event_handler_attributes) directly. This is **very bad practice** but it is also very convenient for our purposes.
+
+[Next: Reconciliation, or patching the DOM &rarr;](/lets-build-a-virtual-dom-library/reconciliation-or-patching-the-dom)

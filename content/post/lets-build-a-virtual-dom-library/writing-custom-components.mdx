@@ -27,7 +27,7 @@ class Counter extends Component {
 
         return createVNode("div", null, [
             `Counter value: ${this.state.count} `,
-            createVNode("button", { onClick: () => this.increment() }, [
+            createVNode("button", { onclick: () => this.increment() }, [
                 buttonText,
             ]),
         ]);
@@ -79,29 +79,40 @@ mount(app(), document.getElementById("app"));
 // The tag name provided ('class Counter extends Component {...}') is not a valid name.
 ```
 
-This is not completely unexpected. So far our `mount()` function can only handle vnodes that have a valid HTML tag name as their `type` property. To handle components, we'll need to first call their `render()` function until we end up with a regular vnode. In JavaScript classes are actually just functions, so we can add an `if (typeof vnode.type === "function")` branch to handle components.
+An error! We did expect this, since our `mount()` function can't handle components yet. It can only handle vnodes whose `type` property is a valid HTML tag name. To mount a component, we'll need to call their `render()` function to get their VDOM tree, and then mount that instead.
+
+Our components are classes, and classes in JavaScript are actually just functions, so we can add an `if (typeof vnode.type === "function")` branch to our `mount()` function to handle components.
 
 ```js
 if (typeof vnode.type === "function") {
     // If the vnode type is a function, we can assume it is a component.
-    const Component = vnode.type;
-
-    // We create an instance of the component with the props passed in.
-    const instance = new Component(vnode.props);
-
-    // Then we call the component's render() function which returns a VDOM tree.
-    // Just like we do with child nodes, this VDOM tree is passed recursively
-    // into the mount function.
-    domNode = mount(instance.render(), parentDom);
+    domNode = getComponentVNode(vnode, parentDom);
 } else {
     // For everything else, we assume vnode.type is a tag name and create a HTMLElement.
     domNode = document.createElement(vnode.type);
 }
 ```
 
+Now we just need to write the `getComponentVNode()` function:
+
+```js
+function getComponentVNode(vnode, parentDom) {
+    // The vnode's type property is the component class
+    const Component = vnode.type;
+
+    // Create an instance of the component with the props passed in, and call
+    // the component's render() function to get its VDOM tree.
+    const instance = new Component(vnode.props);
+    const newVNode = instance.render();
+
+    // Now that we have a "regular" vdom tree, we can pass it back to mount()
+    return mount(newVNode, parentDom);
+}
+```
+
 With this small change, our VDOM library can now render custom components. This is a good step in the right direction, but our buttons don't actually do anything yet.
 
-<JSFiddleEmbed src="https://jsfiddle.net/wildlyinaccurate/jx283sz5/6/embedded/result,html,js/" />
+<JSFiddleEmbed src="https://jsfiddle.net/wildlyinaccurate/jx283sz5/9/embedded/result,html,js/" />
 
 Continue onto the next section to learn how to handle state and events so that our components can react to user input.
 
