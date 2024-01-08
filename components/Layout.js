@@ -32,7 +32,7 @@ export const Layout = (props) => {
         <div className="wrapper">
           <h1 className="site-title">
             <a href="/">
-              <img src="/structured-thoughts-53x42.png" />
+              <img src="/structured-thoughts-53x42.png" alt="Logo" />
             </a>
             <a href="/">
               The <i>Structured Thoughts</i> Blog
@@ -58,7 +58,7 @@ export const Layout = (props) => {
       <footer className="band">
         <div className="wrapper">
           <small>
-            If you like what you're reading and you want to show your
+            If you like what you&apos;re reading and you want to show your
             appreciation, you can{" "}
             <a href="https://ko-fi.com/thestructuredthoughtsblog">
               support me on ko-fi
