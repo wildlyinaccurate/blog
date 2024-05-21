@@ -79,7 +79,7 @@ export const Layout = (props) => {
         }}
       ></script>
       <script
-        src="https://cdn.speedcurve.com/js/lux.js?id=73376842"
+        src="https://cdn-dev.speedcurve.com/js/lux.js?id=73376842"
         defer
         crossOrigin="anonymous"
       ></script>
