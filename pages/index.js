@@ -4,10 +4,6 @@ import { useTina } from "tinacms/dist/react";
 import { Layout } from "../components/Layout";
 import { client } from "../tina/__generated__/client";
 
-export const config = {
-  unstable_runtimeJS: false,
-};
-
 export default function Home(props) {
   const { data } = useTina({
     query: props.query,
@@ -31,7 +27,7 @@ export default function Home(props) {
         {postsList.map((post) => (
           <li key={post.node.id}>
             <Link href={post.node._sys.filename}>
-              <a>{post.node.title}</a>
+              {post.node.title}
             </Link>{" "}
             <span className="post-date">
               ({formatDate(new Date(post.node.created_at))})

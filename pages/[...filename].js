@@ -5,11 +5,7 @@ import { client } from "../tina/__generated__/client";
 import {
   getStaticPathsForPostOrPage,
   getStaticPropsForPostOrPage,
-} from "./[filename]";
-
-export const config = {
-  unstable_runtimeJS: false,
-};
+} from "../lib/static-props";
 
 export default function PageOrPost(props) {
   const { data } = useTina({

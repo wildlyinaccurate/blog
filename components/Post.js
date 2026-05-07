@@ -35,9 +35,7 @@ export const Post = (props) => {
     <Layout title={post.title}>
       {post.parent && (
         <Link href={post.parent._sys.breadcrumbs.join("/")}>
-          <a>
-            &larr; Back to <i>{post.parent.title}</i>
-          </a>
+          &larr; Back to <i>{post.parent.title}</i>
         </Link>
       )}
       <h2 data-tina-field={tinaField(post, "title")}>{post.title}</h2>

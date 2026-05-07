@@ -1,11 +1,10 @@
 import { useTina } from "tinacms/dist/react";
 import { Page } from "../components/Page";
 import { Post } from "../components/Post";
-import { client } from "../tina/__generated__/client";
-
-export const config = {
-  unstable_runtimeJS: false,
-};
+import {
+  getStaticPathsForPostOrPage,
+  getStaticPropsForPostOrPage,
+} from "../lib/static-props";
 
 export default function PageOrPost(props) {
   const { data } = useTina({
@@ -30,54 +29,3 @@ export const getStaticPaths = getStaticPathsForPostOrPage(
 export const getStaticProps = getStaticPropsForPostOrPage(
   (filename) => `${filename}.mdx`
 );
-
-export function getStaticPathsForPostOrPage(
-  getFilenameParam,
-  filterEdges = () => true
-) {
-  return async function getStaticPaths() {
-    const postsQuery = await client.queries.postConnection();
-    const pagesQuery = await client.queries.pageConnection();
-
-    const edges = [
-      ...postsQuery.data.postConnection.edges,
-      ...pagesQuery.data.pageConnection.edges,
-    ];
-
-    const paths = edges.filter(filterEdges).map((x) => {
-      return {
-        params: {
-          filename: getFilenameParam(x),
-        },
-      };
-    });
-
-    return {
-      paths,
-      fallback: false,
-    };
-  };
-}
-
-export function getStaticPropsForPostOrPage(makeRelativePath) {
-  return async function getStaticProps({ params }) {
-    const relativePath = makeRelativePath(params.filename);
-    const { data, query, variables } = await client.queries
-      .post({
-        relativePath,
-      })
-      .catch(() => {
-        return client.queries.page({
-          relativePath,
-        });
-      });
-
-    return {
-      props: {
-        data,
-        query,
-        variables,
-      },
-    };
-  };
-}
