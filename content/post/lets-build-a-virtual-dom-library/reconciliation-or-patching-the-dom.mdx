@@ -3,6 +3,184 @@ title: Reconciliation, or patching the DOM
 parent: content/post/lets-build-a-virtual-dom-library.mdx
 ---
 
-Hey, thanks for reading this far! This guide is still a work in progress, and this part isn't quite finished. You can [follow me on Twitter](https://twitter.com/Joseph_Wynn) to be notified when the guide is complete.
+In the last section we wrote an `update()` function that throws the entire DOM tree away and mounts a fresh one whenever a component's state changes. This works, but it's quite wasteful, and it has another problem too: it destroys any state that lives on the real DOM. Things like input focus and text selection get lost every time we re-mount, because the DOM nodes they belong to no longer exist.
 
 <CarbonAd />
+
+You can see this in the JSFiddle below. Click into the input, type something, and then click the counter button. Your text disappears because the entire DOM gets rebuilt from scratch, destroying the input that you typed into.
+
+<JSFiddleEmbed src="https://jsfiddle.net/wildlyinaccurate/n59dzhgo/1/embedded/result,html,js/" />
+
+The fix is **reconciliation**: instead of replacing the DOM, we walk the previous and next VDOM trees side by side, applying only the changes that are actually needed.
+
+When we compare two vnodes at the same position in the tree, there are three cases we need to handle. If the two vnodes are the same type, we can keep the existing DOM node and just update what's different. If the types are different, we throw away the old DOM node and mount a new one in its place. And if a vnode has been added or removed, we mount or unmount it accordingly. This is roughly the algorithm React used in its early days, and for our purposes it's good enough.
+
+Our new `patch()` function takes a previous vnode, a next vnode, and the parent DOM node, and reconciles the two trees in place. It assumes the two vnodes are of the same type. We'll handle type changes one level up, in `patchChildren()`.
+
+```js
+function patch(prevVNode, nextVNode, parentDom) {
+    // Reuse the existing DOM node.
+    const domNode = prevVNode._dom;
+    nextVNode._dom = domNode;
+
+    // Update the props on this node.
+    patchProps(domNode, prevVNode.props, nextVNode.props);
+
+    // Walk the children.
+    patchChildren(domNode, prevVNode.children || [], nextVNode.children || []);
+}
+```
+
+Notice that we're carrying the previous vnode's `_dom` reference forward onto the new vnode. This is important: the next time the component renders, _that_ tree will become the "previous" one, and it'll need a `_dom` reference too.
+
+`patchProps()` is just two loops. First we clear any props that are no longer present, and then we set any props whose values have changed. We can re-use the `setProperty()` function we wrote in the styles chapter, which means all of our existing prop handling continues to work.
+
+```js
+function patchProps(domNode, prevProps, nextProps) {
+    prevProps = prevProps || {};
+    nextProps = nextProps || {};
+
+    // Clear props that are no longer present.
+    for (const prop in prevProps) {
+        if (!(prop in nextProps)) {
+            setProperty(domNode, prop, "");
+        }
+    }
+
+    // Set props that have changed.
+    for (const prop in nextProps) {
+        if (prevProps[prop] !== nextProps[prop]) {
+            setProperty(domNode, prop, nextProps[prop]);
+        }
+    }
+}
+```
+
+Setting a removed prop to the empty string isn't strictly equivalent to removing it. For example, `domNode.className = ""` is fine, but if we wanted to be really thorough we'd handle some props differently. For our purposes, this is good enough.
+
+Now for the children. `patchChildren()` is where the three cases come into play. We walk both arrays of children in parallel, comparing each pair by index.
+
+```js
+function patchChildren(parentDom, prevChildren, nextChildren) {
+    // Capture the existing DOM nodes before we start mutating anything.
+    const prevDoms = prevChildren.map((child, i) =>
+        typeof child === "object" ? child._dom : parentDom.childNodes[i]
+    );
+
+    const length = Math.max(prevChildren.length, nextChildren.length);
+
+    for (let i = 0; i < length; i++) {
+        const prevChild = prevChildren[i];
+        const nextChild = nextChildren[i];
+
+        if (prevChild === undefined) {
+            // New child, mount it.
+            mount(nextChild, parentDom);
+        } else if (nextChild === undefined) {
+            // Removed child, unmount it.
+            parentDom.removeChild(prevDoms[i]);
+        } else if (sameType(prevChild, nextChild)) {
+            // Same type, patch in place.
+            if (typeof nextChild === "object") {
+                patch(prevChild, nextChild, parentDom);
+            } else if (prevChild !== nextChild) {
+                prevDoms[i].nodeValue = nextChild;
+            }
+        } else {
+            // Different types, replace.
+            const fragment = document.createDocumentFragment();
+            mount(nextChild, fragment);
+            parentDom.replaceChild(fragment, prevDoms[i]);
+        }
+    }
+}
+```
+
+Notice that we capture every previous child's DOM node into a `prevDoms` array _before_ doing any mutations. If we didn't, we'd run into trouble as soon as we removed a child, because the indices into `parentDom.childNodes` would shift out from underneath us.
+
+The `sameType()` helper returns `true` if two vnodes can be patched in place. That means they're both text nodes, or they're both elements (or component instances) of the same type.
+
+```js
+function sameType(a, b) {
+    if (typeof a !== typeof b) {
+        return false;
+    }
+
+    if (typeof a === "object") {
+        return a.type === b.type;
+    }
+
+    return true;
+}
+```
+
+There's one case our new `patch()` function doesn't handle yet: component vnodes. When a component appears as a child of a regular element, its props might have changed between renders, and we need to re-render the component to find out what the new DOM should look like. We can't just patch the component vnode like a regular element. Its `props` aren't real DOM attributes and its `children` aren't real DOM children; they're inputs to `render()`.
+
+To handle this, we need to keep a reference to the component instance on the vnode, and re-use it when we patch. A small change to `createComponentNode()` is enough:
+
+```js
+function createComponentNode(vnode, parentDom) {
+    const Component = vnode.type;
+    const instance = new Component(vnode.props);
+    const newVNode = instance.render();
+
+    instance._currentVNode = newVNode;
+    instance._parentDom = parentDom;
+
+    // Store the instance on the vnode so we can find it during patch.
+    vnode._instance = instance;
+
+    return mount(newVNode, parentDom);
+}
+```
+
+And then a special case at the top of `patch()` for component vnodes:
+
+```js
+function patch(prevVNode, nextVNode, parentDom) {
+    // Components are a special case. Re-render and update the output.
+    if (typeof nextVNode.type === "function") {
+        const instance = (nextVNode._instance = prevVNode._instance);
+        instance.props = nextVNode.props || {};
+
+        const nextRendered = instance.render();
+        update(instance._currentVNode, nextRendered, parentDom);
+
+        instance._currentVNode = nextRendered;
+        nextVNode._dom = nextRendered._dom;
+
+        return;
+    }
+
+    // ...the rest is the same as before.
+}
+```
+
+Now when a parent component re-renders and patches its children, any child component will be given its new props and re-rendered, and its rendered output will be reconciled against the previous one. Component state is preserved because we kept the same instance. We're calling `update()` rather than `patch()` directly because the component's rendered root might have changed type, and `update()` will handle that for us. We'll define it next.
+
+With `patch()` in place, our old `update()` function shrinks down to almost nothing:
+
+```js
+function update(prevVNode, nextVNode, parentDom) {
+    if (sameType(prevVNode, nextVNode)) {
+        patch(prevVNode, nextVNode, parentDom);
+    } else {
+        // Top-level type change. Fall back to a full replace.
+        const fragment = document.createDocumentFragment();
+        mount(nextVNode, fragment);
+        parentDom.replaceChild(fragment, prevVNode._dom);
+    }
+}
+```
+
+The `Component` class itself doesn't need to change at all. It was already calling `update()`, and the new implementation slots straight in.
+
+This algorithm has one big shortcoming, though. Our `patchChildren()` function compares children strictly by index. That means if we have a list of three items and we remove the first one, our reconciler will think every item changed. It'll patch item 1 against the old item 0, item 2 against the old item 1, and remove item 2. This is what React's keys are for. A key is a special prop on each child that uniquely identifies it across renders. With keys in place, the reconciler can match children by key instead of by index, and detect insertions, removals, and re-orderings correctly. We're not going to implement keys here, but it's worth knowing why React yells at you about them. The [React docs on keys](https://react.dev/learn/rendering-lists#keeping-list-items-in-order-with-key) are a good place to learn more.
+
+The JSFiddle below shows our reconciler in action. Try clicking into the input, typing something, and then clicking the counter button. Your text stays put, because the input's DOM node is no longer being thrown away every time the count changes.
+
+<JSFiddleEmbed src="https://jsfiddle.net/wildlyinaccurate/xzg8uo5f/1/embedded/result,html,js/" />
+
+In the next section we're going to look at JSX, and how it lets us write something that looks like HTML inside our JavaScript.
+
+[Next: What about JSX? &rarr;](/lets-build-a-virtual-dom-library/what-about-jsx)

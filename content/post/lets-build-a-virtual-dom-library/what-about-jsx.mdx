@@ -3,6 +3,103 @@ title: What about JSX?
 parent: content/post/lets-build-a-virtual-dom-library.mdx
 ---
 
-Hey, thanks for reading this far! This guide is still a work in progress, and this part isn't quite finished. You can [follow me on Twitter](https://twitter.com/Joseph_Wynn) to be notified when the guide is complete.
+Up until now we've been building our VDOM trees by calling `createVNode()` directly. That works, but it doesn't look much like the React code you'll find in the wild, where elements are written as if they were HTML. That HTML-looking syntax is called **JSX**, and it's not a runtime feature at all. It's a syntax extension that gets compiled away at build time, usually by a tool like [Babel](https://babeljs.io). By the time your code runs in the browser, every piece of JSX has been converted into plain function calls.
 
 <CarbonAd />
+
+Take this little snippet of JSX:
+
+```jsx
+<div className="container">
+    <h1>Hello, World!</h1>
+</div>
+```
+
+When Babel sees this, it transforms it into a function call that looks suspiciously familiar:
+
+```js
+React.createElement("div", { className: "container" },
+    React.createElement("h1", null, "Hello, World!")
+);
+```
+
+JSX elements become calls to a `createElement`-style function, with the tag name as the first argument, the props as the second, and the children as the rest. Our `createVNode()` function has exactly the same shape.
+
+Babel doesn't know or care that our function is called `createVNode()` instead of `React.createElement()`. We just need to tell it. The simplest way is with a **JSX pragma**: a magic comment at the top of the file.
+
+```jsx
+/** @jsx createVNode */
+
+const tree = (
+    <div className="container">
+        <h1>Hello, World!</h1>
+        <p>
+            We're building a <small>(really simple)</small> virtual DOM library.
+        </p>
+    </div>
+);
+```
+
+With that pragma in place, Babel compiles every JSX element in the file into a `createVNode()` call. You can also configure this globally in your Babel config, which is what you'd usually do in a real project:
+
+```json
+{
+    "plugins": [
+        ["@babel/plugin-transform-react-jsx", { "pragma": "createVNode" }]
+    ]
+}
+```
+
+If you actually try to run the code above with our current `createVNode()` function, you'll find one annoying difference between Babel's output and what we've been writing by hand: Babel passes children as rest arguments rather than an array.
+
+```js
+// What Babel produces:
+createVNode("h1", null, "Hello, ", createVNode("strong", null, "World"), "!")
+
+// What we've been writing:
+createVNode("h1", null, ["Hello, ", createVNode("strong", null, "World"), "!"])
+```
+
+This is an easy fix. We just need to gather the rest arguments into the `children` array.
+
+```js
+function createVNode(type, props, ...children) {
+    return {
+        type,
+        props,
+        children,
+        _dom: null,
+    };
+}
+```
+
+Now both styles produce the same vnode tree.
+
+For one last comparison, here's the `Counter` component from the components chapter, rewritten in JSX:
+
+```jsx
+class Counter extends Component {
+    state = { count: 0 };
+
+    increment() {
+        this.setState({ count: this.state.count + 1 });
+    }
+
+    render() {
+        const buttonText = this.props.buttonText || "+1";
+
+        return (
+            <div>
+                Counter value: {this.state.count}{" "}
+                <button onclick={() => this.increment()}>{buttonText}</button>
+            </div>
+        );
+    }
+}
+```
+
+After Babel has compiled it, this is the exact same code we were writing by hand all along.
+
+That's the end of the guide. We've built a virtual DOM library that mounts elements, renders custom components, and reconciles updates without throwing the DOM away. It's not fast and it's not feature-complete, but hopefully it's given you a clearer picture of how libraries like React and Preact actually work.
+
+Thanks for coming along on this journey with me!
