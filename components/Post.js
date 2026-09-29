@@ -3,6 +3,7 @@ import { tinaField } from "tinacms/dist/react";
 import { TinaMarkdown } from "tinacms/dist/rich-text";
 import { Layout } from "./Layout";
 import Link from "next/link";
+import { BisectStepper, ConflictToggle, GitPlayground, HashExplorer, RevisionExplorer, ThreeTrees } from "./hackers-guide";
 
 const components = {
   code_block: (props) => <Prism theme="vsLight" {...props} />,
@@ -17,6 +18,12 @@ const components = {
       />
     </div>
   ),
+  GitPlayground: (props) => <GitPlayground {...props} />,
+  ThreeTrees: (props) => <ThreeTrees {...props} />,
+  HashExplorer: (props) => <HashExplorer {...props} />,
+  RevisionExplorer: (props) => <RevisionExplorer {...props} />,
+  BisectStepper: (props) => <BisectStepper {...props} />,
+  ConflictToggle: (props) => <ConflictToggle {...props} />,
   CarbonAd: () => (
     <div className="ad-container">
       <script

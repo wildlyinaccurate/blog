@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 800 442" width="800" height="442" font-size="18">
+  <title>shared-subtrees</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  
+  <path d="M 120 68 L 120 110" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 640 68 L 640 110" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 120 222 L 120 290" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 640 222 L 640 290" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 200.88888888888889 222 L 299.1111111111111 290" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 559.1111111111111 222 L 460.8888888888889 290" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g id="c1">
+    <rect x="0" y="0" width="240" height="68" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="16" y="24" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">commit 1</text>
+    <text x="16" y="48" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">tree 292240e</text>
+  </g>
+  <g id="c2">
+    <rect x="520" y="0" width="240" height="68" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="536" y="24" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">commit 2</text>
+    <text x="536" y="48" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">tree 8f1c0a2</text>
+  </g>
+  <g id="t1">
+    <rect x="0" y="110" width="240" height="112" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="16" y="134" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">292240e</text>
+    <text x="16" y="158" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">root tree</text>
+    <text x="16" y="180" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">blob 9761654 README</text>
+    <text x="16" y="202" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">tree 675bff7 src</text>
+  </g>
+  <g id="t2">
+    <rect x="520" y="110" width="240" height="112" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="536" y="134" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">8f1c0a2</text>
+    <text x="536" y="158" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">root tree</text>
+    <text x="536" y="180" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">blob a5f1c30 README</text>
+    <text x="536" y="202" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">tree 675bff7 src</text>
+  </g>
+  <g id="r1">
+    <rect x="0" y="290" width="240" height="112" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="16" y="314" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">9761654</text>
+    <text x="16" y="338" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">README</text>
+    <text x="16" y="360" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">This is the readme.</text>
+    <text x="16" y="382" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve"></text>
+  </g>
+  <g id="src">
+    <rect x="260" y="290" width="240" height="112" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="276" y="314" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">675bff7</text>
+    <text x="276" y="338" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">src (stored once)</text>
+    <text x="276" y="360" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">blob 032e1d1 hello.c</text>
+    <text x="276" y="382" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve"></text>
+  </g>
+  <g id="r2">
+    <rect x="520" y="290" width="240" height="112" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="536" y="314" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">a5f1c30</text>
+    <text x="536" y="338" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">README</text>
+    <text x="536" y="360" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">This is the readme.</text>
+    <text x="536" y="382" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">Some more information.</text>
+  </g>
+</svg>

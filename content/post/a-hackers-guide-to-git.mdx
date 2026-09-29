@@ -1,0 +1,61 @@
+---
+title: A Hacker's Guide to Git (Second Edition)
+created_at: 2026-09-29T09:00:00.000Z
+---
+
+Git is the most widely used version control system in the world. By that measure, I'd argue that it's also the most misunderstood version control system in the world.
+
+This statement probably doesn't ring true straight away because on the surface, Git is pretty simple. Everybody understands adding, committing, pushing and pulling; but this is about as far as Git's simplicity goes. Past this point, Git is shrouded by fear, uncertainty and doubt. Once you start talking about rebasing, multiple remotes, remote-tracking branches, detached HEAD states... Git becomes less of an easily-understood tool and more of a feared deity. Anybody who talks about no-fast-forward merges is regarded with quiet superstition, and even veteran hackers would rather stay away from rebasing "just to be safe".
+
+When I wrote the first edition of this guide in 2014, I blamed a lot of this on people coming to Git from Subversion and trying to apply what they already knew. Twelve years later, most people have never used Subversion. They learned Git from GitHub, or from a GUI, or from a list of incantations copied from Stack Overflow (or, more recently, from an AI assistant). The fear is the same, though, and so is the cause: Git doesn't work like the mental model most people have of it. It's not a series of numbered snapshots of a folder, and it's not really "a tool for syncing code with GitHub" either.
+
+Complex systems like Git become much easier to understand once you figure out how they really work. The goal of this guide is to shed some light on how Git works under the hood. We're going to take a look at Git's core concepts, including its object storage, how commits work, how branches and tags work, what the index actually is, and the different kinds of merging in Git including the much-feared rebase. Along the way we'll look at the tools that make sense once you understand these concepts: the reflog, worktrees, bisect, and a handful of others. Hopefully at the end of it all, you'll have a solid understanding of these concepts and will be able to use some of Git's more advanced features with confidence.
+
+## What's new in the second edition
+
+Git has changed a lot since 2014, and this edition has been rewritten to match. Every terminal session in the guide was recorded with a current version of Git, and the differences are more than cosmetic:
+
+* The default branch is `main`, and `git switch` and `git restore` have taken over the parts of `git checkout` that most people use day-to-day.
+* Merges are performed by the `ort` strategy rather than `recursive`, and rebases are performed by the merge backend rather than by applying patches. The output you see, and the way conflicts are presented, is different.
+* References can be stored in a `packed-refs` file or in the newer reftable format, so `.git/refs` doesn't always tell you the whole story.
+* Git can sign tags and commits with SSH keys, not just GPG.
+* There are new tools for working with more than one branch at once (worktrees), for rewriting stacks of branches (`git rebase --update-refs`), and for cloning enormous repositories without downloading all of them (partial clones).
+* Repositories can use SHA-256 instead of SHA-1 for object names.
+
+There are also several entirely new chapters. The index, which the first edition mentioned only in passing, gets a chapter of its own, along with worktrees, packfiles and garbage collection, and a chapter on recovering lost commits.
+
+## Who this guide is for
+
+It's worth noting at this point that this guide is not intended to be a beginner's introduction to Git. This guide was written for people who already use Git, but would like to better understand it by taking a peek under the hood, and learn a few neat tricks along the way. If you can commit, push, and pull, you're ready.
+
+Every example in this guide is a real terminal session, and you'll get the most out of it if you follow along. All you need is a recent version of Git (2.46 or later will match the output here) and a terminal.
+
+This guide is intended to be read in order, but the sections are listed below in case you want to skip ahead.
+
+0. [Repositories](a-hackers-guide-to-git/repositories)
+0. [Objects](a-hackers-guide-to-git/objects)
+0. [Tree objects](a-hackers-guide-to-git/tree-objects)
+0. [Commits](a-hackers-guide-to-git/commits)
+0. [The index](a-hackers-guide-to-git/the-index)
+0. [References](a-hackers-guide-to-git/references)
+0. [Branches](a-hackers-guide-to-git/branches)
+0. [Tags](a-hackers-guide-to-git/tags)
+0. [Merging](a-hackers-guide-to-git/merging)
+0. [Cherry-picking](a-hackers-guide-to-git/cherry-picking)
+0. [Rebasing](a-hackers-guide-to-git/rebasing)
+0. [Remotes](a-hackers-guide-to-git/remotes)
+0. [Pushing](a-hackers-guide-to-git/pushing)
+0. [Fetching](a-hackers-guide-to-git/fetching)
+0. [Pulling](a-hackers-guide-to-git/pulling)
+0. [Worktrees](a-hackers-guide-to-git/worktrees)
+0. [Stashing](a-hackers-guide-to-git/stashing)
+0. [Recovering lost commits](a-hackers-guide-to-git/recovering-lost-commits)
+0. [Packfiles and garbage collection](a-hackers-guide-to-git/packfiles-and-garbage-collection)
+0. [Bisecting](a-hackers-guide-to-git/bisecting)
+0. [Useful commands](a-hackers-guide-to-git/useful-commands)
+
+<CarbonAd />
+
+With that said, let's begin.
+
+[Next: Repositories &rarr;](/a-hackers-guide-to-git/repositories)

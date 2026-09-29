@@ -63,6 +63,17 @@ export default {
             },
           ],
         },
+        // Interactive elements from A Hacker's Guide to Git. `fallback` names
+        // the SVG that the EPUB and PDF show in place of the element.
+        ...["GitPlayground", "ThreeTrees", "HashExplorer", "RevisionExplorer", "BisectStepper", "ConflictToggle"].map((name) => ({
+          name,
+          label: `Git guide: ${name}`,
+          fields: [
+            { name: "scenario", label: "Scenario", type: "string" },
+            { name: "fallback", label: "Fallback image", type: "string" },
+            { name: "alt", label: "Fallback alt text", type: "string" },
+          ],
+        })),
         {
           name: "CarbonAd",
           label: "Carbon Ad Placement",

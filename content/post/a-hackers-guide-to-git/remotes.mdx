@@ -1,0 +1,131 @@
+---
+title: Remotes
+parent: content/post/a-hackers-guide-to-git.mdx
+---
+
+In order to collaborate on any Git project, you need to utilise at least one remote repository. Unlike centralised version control systems which require a dedicated server, a Git remote is simply another Git repository. GitHub, GitLab and friends add a web interface, access control and a pull request workflow on top, but as far as Git is concerned they are just repositories at the other end of a URL. In order to demonstrate this, we first need to understand the concept of a *bare* repository.
+
+<CarbonAd />
+
+Recall that Git stores the entire repository inside the `.git` directory. Inside this directory are blobs and tree objects which can be traversed to build a snapshot of the entire project. This means that Git doesn't actually *need* a working tree; it only uses the working tree to figure out what changes have been made since the last commit. This is easily demonstrated if you delete a file from a repository, and then run `git restore <file>`. Despite being removed from the file system, Git can still restore the file because it has previously stored it in the repository. You can do the same thing with entire directories and Git will still be able to restore everything by traversing its tree objects.
+
+It is therefore possible to have a repository which can store your project's history without actually having a working tree. This is called a *bare* repository. Bare repositories are most commonly used as a "central" repository where collaborators can share changes. Every repository on GitHub is a bare repository. The mechanism for sharing these changes will be explained in detail in the *Pushing*, *Fetching* and *Pulling* chapters. For now, let's look at creating a bare repository.
+
+```
+$ git init --bare
+Initialized empty Git repository in /home/demo/bare-repo/
+
+$ ls -l
+total 24
+-rw-r--r--   1 demo demo   21 Sep 29 00:23 HEAD
+-rw-r--r--   1 demo demo  111 Sep 29 00:23 config
+-rw-r--r--   1 demo demo   73 Sep 29 00:23 description
+drwxr-xr-x  16 demo demo  512 Sep 29 00:23 hooks
+drwxr-xr-x   3 demo demo   96 Sep 29 00:23 info
+drwxr-xr-x   4 demo demo  128 Sep 29 00:23 objects
+drwxr-xr-x   4 demo demo  128 Sep 29 00:23 refs
+```
+
+Notice how rather than creating a `.git` directory for the repository, `git init --bare` simply treats the current directory as the `.git` directory.
+
+There's really not much to this repository. The only interesting things it contains are a `HEAD` reference which points to the `main` branch (which doesn't exist yet), and a `config` file which has the `bare` flag set to `true`.
+
+```
+$ cat HEAD
+ref: refs/heads/main
+
+$ cat config
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+	ignorecase = true
+	precomposeunicode = true
+```
+
+So what can we do with this repository? Well, nothing much right now. Git won't let us modify the working tree because there isn't one.
+
+```
+$ touch README
+
+$ git add README
+fatal: this operation must be run in a work tree
+```
+
+(We *could* use the plumbing commands from *The index* to write objects and update refs directly, and that's exactly what `git push` is going to do to this repository shortly.) The intended use of this repository is for other collaborators to `clone` and `pull` changes from, as well as `push` their own changes to.
+
+## Cloning
+
+Now that we've set up a bare repository, let's look at the concept of *cloning* a repository.
+
+The `git clone` command is really just a shortcut which does a few things for you. With its default configuration, it will:
+
+1. Create a new repository with `git init`.
+2. Add a remote called `origin` pointing at the URL you gave it.
+3. Fetch every branch and tag from `origin`, creating remote-tracking branches for each.
+4. Create a local branch matching the remote's `HEAD`, and check it out.
+
+The `clone` command takes a URL and supports a number of transport protocols including HTTPS, SSH, and Git's own protocol. It also supports plain old file paths, which is what we'll use.
+
+```
+$ git clone bare-repo/ clone-of-bare-repo
+Cloning into 'clone-of-bare-repo'...
+warning: You appear to have cloned an empty repository.
+done.
+```
+
+Let's inspect this cloned repository to see how Git has set it up.
+
+```
+$ cd clone-of-bare-repo/
+
+$ find . -type f -not -path "./.git/hooks/*"
+./.git/config
+./.git/HEAD
+./.git/info/exclude
+./.git/description
+
+$ cat .git/HEAD
+ref: refs/heads/main
+
+$ cat .git/config
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = /home/demo/bare-repo/
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+```
+
+This is quite literally a clone of `bare-repo`. The only difference is that this repository contains a few extra lines in `.git/config`.
+
+First, it contains a `remote` listing for "origin", which is the default name given to a repository's main remote. There is nothing special about the name; `origin` is a convention, and you can have as many remotes as you like (people who contribute to open source projects often have `origin` pointing at their fork and `upstream` pointing at the original). This section tells Git the URL of the repository, and which references it should retrieve when performing a `git fetch`.
+
+Below that is a `branch` listing. This is the configuration for a *remote-tracking branch*, which we'll come back to in *Fetching*. `git remote` will summarise all of this for you.
+
+```
+$ git remote -v
+origin	/home/demo/bare-repo/ (fetch)
+origin	/home/demo/bare-repo/ (push)
+
+$ git remote show origin
+* remote origin
+  Fetch URL: /home/demo/bare-repo/
+  Push  URL: /home/demo/bare-repo/
+  HEAD branch: (unknown)
+  Local branch configured for 'git pull':
+    main merges with remote main
+```
+
+The remote's `HEAD` branch is unknown because the remote is empty. Once it has commits, this is where you'd find out which branch a project considers its default.
+
+Before we get into remote-tracking branches, let's store some data in the remote repository.
+
+[Next: Pushing &rarr;](/a-hackers-guide-to-git/pushing)

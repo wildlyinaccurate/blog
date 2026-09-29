@@ -1,0 +1,232 @@
+---
+title: Useful commands
+parent: content/post/a-hackers-guide-to-git.mdx
+---
+
+The commands in this chapter are the ones I find myself reaching for often enough to want them written down, but not often enough to remember without looking. Every one of them is a direct application of something from earlier in the guide.
+
+<CarbonAd />
+
+## Find which commit a reference points at
+
+```
+$ git rev-parse HEAD
+ef49a14e3c8c05b89c6a0e639ad30027a3a95aee
+
+$ git rev-parse --short HEAD
+ef49a14
+```
+
+## Find which branches contain a commit
+
+```
+$ git branch --contains main~3
+  baz
+* conflicting
+  foo
+  main
+  part-1
+  part-2
+  wip
+```
+
+Add `-r` for remote-tracking branches, or `-a` for both. `git tag --contains` does the same for tags, which answers "which release was this fix in?".
+
+## Find commits that are in one branch but not another
+
+```
+$ git log --oneline main..conflicting
+ef49a14 Add shared file
+```
+
+This is the two-dot range from *References*: reachable from the right, not from the left. `main..` on its own (no right side) means "up to `HEAD`", and `@{u}..` is "what haven't I pushed?".
+
+### Exclude commits that were cherry-picked
+
+Sometimes a commit is on both branches, but as two different objects, because it was cherry-picked. Git can detect these by comparing the *changes* rather than the hashes, and leave them out.
+
+```
+$ git log --oneline --cherry-pick --right-only main...conflicting
+ef49a14 Add shared file
+```
+
+## Compare two versions of a branch
+
+After you've rebased or amended a branch, `git diff` between the old and new tips is useless (everything moved). `git range-diff` compares the two *sequences of commits* and shows which commits changed, which were added or dropped, and how each one's diff differs.
+
+```
+$ git range-diff main...wip
+1:  05af0a2 < -:  ------- Add shared file (Spanish)
+-:  ------- > 1:  d0d4aaf Add greeting
+-:  ------- > 2:  7a248e1 Add farewell
+```
+
+The most common form is `git range-diff @{u}...HEAD` on a branch you're about to force-push, to see exactly what the rebase changed. It is also the best way to review a pull request that has been rebased since you last looked at it.
+
+## View details of an object
+
+```
+$ git cat-file -p HEAD
+tree b2bac5883a60a40f50f142f9ecf40809911d0af1
+parent 05af0a27a29222f09de063cd9d243cc1598caa6b
+author Joseph Wynn <joseph@wildlyinaccurate.com> 1780003240 +1200
+committer Joseph Wynn <joseph@wildlyinaccurate.com> 1780003420 +1200
+
+Add shared file
+```
+
+### Show an object's type
+
+```
+$ git cat-file -t HEAD
+commit
+```
+
+### Show an object's size
+
+```
+$ git cat-file -s HEAD
+246
+```
+
+## Print the tree of a given reference
+
+```
+$ git ls-tree -r -t HEAD
+100644 blob f70f10e4db19068f79bc43844b49f3eece45c4e8	A.txt
+100644 blob 223b7836fb19fdf64ba2d3cd6173c6a283141f78	B.txt
+100644 blob 3cc58df83752123644fef39faab2393af643b1d2	C.txt
+100644 blob 178481050188cf00d7d9cd5a11e43ab8fab9294f	D.txt
+100644 blob 1c507261389e25abfe3620ddd348c73f4eb3b91e	E.txt
+100644 blob cf84443e49e1b366fac938711ddf4be2d4d1d9e9	F.txt
+100644 blob 2638c45f8e7bc5b56f70e92390153572811782c3	O.txt
+100644 blob d556eb5858d616a1bda314d82cf8f75a132244c9	shared.txt
+```
+
+## Show the contents of a file at a specific commit
+
+```
+$ git show 'HEAD~1:shared.txt'
+uno
+```
+
+No checkout required. This works with any revision on the left of the colon, including `origin/main:` and `stash@{0}:`.
+
+## Find the most recent tag
+
+`git describe` will take any reference or commit hash, and return the name of the most recent tag reachable from it. If the tag points at the commit you gave it, `git describe` will return only the tag name. Otherwise, it will suffix the tag name with the number of commits since the tag and an abbreviation of the commit hash. This can be helpful for build and release scripts, as well as figuring out which version a change was introduced in.
+
+```
+$ git describe main
+v1.0-5-g05af0a2
+
+$ git describe --abbrev=0 main
+v1.0
+
+$ git describe --tags --exact-match v1.0
+v1.0
+```
+
+`--abbrev=0` gives just the tag, and `--exact-match` fails unless the commit *is* tagged, which is handy in a release script that should refuse to run from an untagged commit.
+
+## Find the commit that added or removed a string
+
+```
+$ git log --oneline --all -S 'Hello, world'
+d0d4aaf Add greeting
+```
+
+`-S` (the "pickaxe") finds commits where the number of occurrences of the string changed, which is a more useful question than "which commits mention this string in a diff". `-G` does the same with a regular expression. Both are dramatically faster than checking out old commits and grepping.
+
+## Show the history of a range of lines
+
+```
+$ git log --oneline -L 1,1:greeting.txt wip
+d0d4aaf Add greeting
+
+diff --git a/greeting.txt b/greeting.txt
+new file mode 100644
+index 0000000..a5c1966
+--- /dev/null
++++ b/greeting.txt
+@@ -0,0 +1,1 @@
++Hello, world
+```
+
+`-L <start>,<end>:<file>` follows a block of lines back through history, tracking it across edits, and shows each commit that touched it. It's `git blame` for people who want to know the *previous* answer too. `-L :<function>:<file>` does the same for a whole function, if Git can recognise the language.
+
+## Blame, ignoring the noise
+
+```
+$ git blame -s wip -- farewell.txt
+7a248e1f 1) Goodbye
+```
+
+`git blame` on its own is often dominated by whoever last reformatted the file. `-w` ignores whitespace changes, `-M` follows lines that moved within the file, and `-C` follows lines that were copied from other files. `--ignore-rev` skips a specific commit (the big reformat), and `blame.ignoreRevsFile` lets you keep a list of them in the repository so everybody's blame skips them.
+
+## Custom log formats
+
+```
+$ git log --oneline --format='%h %as %an: %s' -3
+ef49a14 2026-05-29 Joseph Wynn: Add shared file
+05af0a2 2026-05-29 Joseph Wynn: Add shared file (Spanish)
+eec7c29 2026-05-29 Joseph Wynn: O
+```
+
+`--format` takes placeholders for every field in a commit object (`%H` full hash, `%an` author name, `%as` author date as YYYY-MM-DD, `%s` subject, `%b` body, `%d` refs, and dozens more in `git help log`). Two related commands are worth knowing: `git log --first-parent` shows only the mainline of a branch that's had lots of merges, and `git shortlog -sn` counts commits per author.
+
+```
+$ git log --oneline --first-parent -3 main
+05af0a2 Add shared file (Spanish)
+eec7c29 O
+3b2d27e D
+
+$ git shortlog -sn --all
+    19	Joseph Wynn
+```
+
+## Count commits
+
+```
+$ git rev-list --count main
+8
+```
+
+`rev-list` is the plumbing behind `git log`. Anything `log` accepts as a range, `rev-list --count` will count, so `git rev-list --count @{u}..` is "how many commits am I ahead by?".
+
+## List every branch and what it points at
+
+```
+$ git show-ref --heads
+9643a9ce6db7087d2802b4376f15a3dccf5185be refs/heads/bar
+ff3e5001c7ca5761a1a5c8e6114893413812b3b7 refs/heads/baz
+ef49a14e3c8c05b89c6a0e639ad30027a3a95aee refs/heads/conflicting
+3b2d27ed1af386f275c0a1515baf6f99b022a9d3 refs/heads/foo
+05af0a27a29222f09de063cd9d243cc1598caa6b refs/heads/main
+2745d7b9a93d585d9ac32aea7384e672a5d748f4 refs/heads/part-1
+d08ddfc3fb64c53d842f8b6a84e8113e4127bee3 refs/heads/part-2
+7a248e1fd286af3711359c186a38ba00b71200d7 refs/heads/wip
+```
+
+`git for-each-ref` is the more flexible version, with `--format` and `--sort` (`git for-each-ref --sort=-committerdate refs/heads/` lists your branches by most recent commit, which is the fastest way to find what you were working on last week).
+
+## Configuration worth setting once
+
+Finally, the handful of settings this guide has recommended along the way, all in one place.
+
+```
+$ git config set --global init.defaultBranch main
+$ git config set --global merge.conflictStyle zdiff3
+$ git config set --global pull.ff only
+$ git config set --global fetch.prune true
+$ git config set --global push.autoSetupRemote true
+$ git config set --global push.followTags true
+$ git config set --global push.useForceIfIncludes true
+$ git config set --global rebase.autoSquash true
+$ git config set --global rebase.updateRefs true
+$ git config set --global rerere.enabled true
+```
+
+None of these change what Git *is*. They just make its defaults match the way it's actually used, now that you know how it works.
+
+[&larr; Back to the start](/a-hackers-guide-to-git)

@@ -1,0 +1,7 @@
+body { font-family: Georgia, "Times New Roman", serif; line-height: 1.5; }
+h1, h2, h3 { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+h1 { page-break-before: always; }
+pre { font-size: 0.85em; line-height: 1.35; white-space: pre-wrap; background: #f6f6f6; padding: 0.6em; border-radius: 3px; }
+code { font-family: Menlo, Consolas, monospace; }
+img { max-width: 100%; height: auto; }
+blockquote { border-left: 3px solid #ccc; margin-left: 0; padding-left: 1em; color: #555; }

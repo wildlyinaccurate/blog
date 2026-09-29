@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-45.849999999999994 -97.5 798 458" width="798" height="458" font-size="18">
+  <title>conflict-three-way</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  
+  <path d="M 300 45 L 420 45" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 300 154.28571428571428 L 420 145.71428571428572" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 300 263.57142857142856 L 420 246.42857142857144" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g id="ours">
+    <rect x="0" y="0" width="300" height="90" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="16" y="24" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">ours (main)</text>
+    <text x="16" y="48" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;h1&gt;Welcome, friend&lt;/h1&gt;</text>
+    <text x="16" y="70" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;p&gt;This is our web site.&lt;/p&gt;</text>
+  </g>
+  <g id="base">
+    <rect x="0" y="120" width="300" height="90" fill="#ffffff" stroke="#888a85" stroke-width="1.5"/>
+    <text x="16" y="144" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">merge base (fa2639d)</text>
+    <text x="16" y="168" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;h1&gt;Welcome&lt;/h1&gt;</text>
+    <text x="16" y="190" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;p&gt;This is our website.&lt;/p&gt;</text>
+  </g>
+  <g id="theirs">
+    <rect x="0" y="240" width="300" height="90" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="16" y="264" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">theirs (conflicting-branch)</text>
+    <text x="16" y="288" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;h1&gt;Welcome!&lt;/h1&gt;</text>
+    <text x="16" y="310" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;p&gt;This is our website.&lt;/p&gt;</text>
+  </g>
+  <g id="m1">
+    <rect x="420" y="0" width="300" height="90" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="436" y="24" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</text>
+    <text x="436" y="48" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;h1&gt;Welcome, friend&lt;/h1&gt;</text>
+    <text x="436" y="70" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;p&gt;This is our web site.&lt;/p&gt;</text>
+  </g>
+  <g id="m2">
+    <rect x="420" y="90" width="300" height="90" fill="#ffffff" stroke="#888a85" stroke-width="1.5"/>
+    <text x="436" y="114" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">||||||| fa2639d</text>
+    <text x="436" y="138" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;h1&gt;Welcome&lt;/h1&gt;</text>
+    <text x="436" y="160" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;p&gt;This is our website.&lt;/p&gt;</text>
+  </g>
+  <g id="m3">
+    <rect x="420" y="180" width="300" height="90" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="436" y="204" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">=======</text>
+    <text x="436" y="228" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;h1&gt;Welcome!&lt;/h1&gt;</text>
+    <text x="436" y="250" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">&lt;p&gt;This is our website.&lt;/p&gt;</text>
+  </g>
+  <g id="m4">
+    <rect x="420" y="270" width="300" height="46" fill="#ffffff" stroke="#888a85" stroke-width="1.5"/>
+    <text x="436" y="294" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">&gt;&gt;&gt;&gt;&gt;&gt;&gt; conflicting-branch</text>
+  </g>
+  <g id="cap">
+    
+    <text x="572" y="-49.5" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#888a85" font-style="italic">index.html, as Git leaves it</text>
+  </g>
+  <g id="cap2">
+    
+    <text x="149.60000000000002" y="-49.5" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#888a85" font-style="italic">the three versions Git compared</text>
+  </g>
+</svg>

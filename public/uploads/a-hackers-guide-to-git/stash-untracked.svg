@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-54.32 -128 516 454" width="516" height="454" font-size="18">
+  <title>stash-untracked</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  
+  <path d="M 89.87711022071366 16.464182546688825 L 20.122889779286346 73.53581745331118" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 194 90 L 26 90" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 199.87711022071366 73.53581745331118 L 130.12288977928634 16.464182546688825" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 199.87711022071366 106.46418254668882 L 130.12288977928634 163.53581745331118" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 0 207 L 0 116" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 306.2 90 L 246 90" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 110 -72 L 110 -26" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 110 270 L 110 206" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 279.4 -72 L 228.950620878119 65.58921578694817" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <g id="A">
+    <circle cx="0" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="0" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">A</text>
+  </g>
+  <g id="B">
+    <circle cx="110" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">B</text>
+  </g>
+  <g id="U">
+    <circle cx="110" cy="180" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="180" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">U</text>
+  </g>
+  <g id="C">
+    <circle cx="220" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="220" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">C</text>
+  </g>
+  <g id="main">
+    <rect x="-34.32" y="207" width="68.64" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="0" y="225" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">main</text>
+  </g>
+  <g id="stash">
+    <rect x="306.2" y="72" width="135.6" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="374" y="90" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">refs/stash</text>
+  </g>
+  <g id="bnote">
+    <rect x="73.25" y="-108" width="73.5" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="-90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">index</text>
+  </g>
+  <g id="unote">
+    <rect x="23.75" y="270" width="172.5" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="288" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">untracked files</text>
+  </g>
+  <g id="cnote">
+    <rect x="214.6" y="-108" width="142.8" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="286" y="-90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">working tree</text>
+  </g>
+</svg>

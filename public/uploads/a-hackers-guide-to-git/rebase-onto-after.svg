@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-46 -128 645 346" width="645" height="346" font-size="18">
+  <title>rebase-onto-after</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  
+  <path d="M 84 90 L 26 90" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 194 90 L 136 90" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 304 90 L 246 90" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 199.87711022071366 16.464182546688825 L 130.12288977928634 73.53581745331118" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 304 0 L 246 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 414 0 L 356 0" fill="none" stroke="#888a85" stroke-width="1.5" opacity="0.5" marker-end="url(#arrow-ghost)"/>
+  <path d="M 524 0 L 466 0" fill="none" stroke="#888a85" stroke-width="1.5" opacity="0.5" marker-end="url(#arrow-ghost)"/>
+  <path d="M 414 90 L 356 90" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 524 90 L 466 90" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 330 162 L 330 116" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 330 -72 L 330 -26" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 550 162 L 550 116" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g id="A">
+    <circle cx="0" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="0" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">A</text>
+  </g>
+  <g id="B">
+    <circle cx="110" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">B</text>
+  </g>
+  <g id="E">
+    <circle cx="220" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="220" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">E</text>
+  </g>
+  <g id="F">
+    <circle cx="330" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="330" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">F</text>
+  </g>
+  <g id="G">
+    <circle cx="220" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="220" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">G</text>
+  </g>
+  <g id="H">
+    <circle cx="330" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="330" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">H</text>
+  </g>
+  <g id="I" opacity="0.35" stroke-dasharray="6 4">
+    <circle cx="440" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="440" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">I</text>
+  </g>
+  <g id="J" opacity="0.35" stroke-dasharray="6 4">
+    <circle cx="550" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="550" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">J</text>
+  </g>
+  <g id="I2">
+    <circle cx="440" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="440" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">I'</text>
+  </g>
+  <g id="J2">
+    <circle cx="550" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="550" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">J'</text>
+  </g>
+  <g id="main">
+    <rect x="295.68" y="162" width="68.64" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="330" y="180" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">main</text>
+  </g>
+  <g id="bar">
+    <rect x="301.26" y="-108" width="57.48" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="330" y="-90" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">bar</text>
+  </g>
+  <g id="baz">
+    <rect x="521.26" y="162" width="57.48" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="550" y="180" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">baz</text>
+  </g>
+</svg>

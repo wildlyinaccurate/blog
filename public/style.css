@@ -124,6 +124,7 @@ code,
 pre {
 	color: #403f53;
 	margin: 1rem 0;
+	overflow-x: auto;
 	padding: 0.8rem 1.2rem;
 }
 
@@ -158,4 +159,263 @@ code {
 	justify-content: center;
 	margin: 2rem auto;
 	text-align: center;
+}
+
+main img,
+main table {
+	margin-inline: auto;
+}
+
+main img {
+	margin-block: 1.5rem;
+}
+
+main table {
+	border-collapse: collapse;
+	margin-block: 1rem;
+}
+
+main th,
+main td {
+	border: 1px solid #ddd;
+	padding: 0.3rem 0.8rem;
+	text-align: left;
+}
+
+/* A Hacker's Guide to Git: interactive elements */
+.hg-widget {
+	border: 1px solid #ddd;
+	border-radius: 0.5rem;
+	margin: 2rem 0;
+	padding: 1rem 1.2rem;
+}
+
+.hg-title {
+	color: #4e9a06;
+	font-size: 0.85rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.hg-toolbar {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem 0.8rem;
+	margin: 0.6rem 0;
+}
+
+.hg-toolbar button {
+	background: #f2f2f2;
+	border: 1px solid #ccc;
+	border-radius: 0.3rem;
+	color: #a31515;
+	cursor: pointer;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 0.85rem;
+	padding: 0.3rem 0.6rem;
+}
+
+.hg-toolbar button:hover:not(:disabled) {
+	background: #e6e6e6;
+}
+
+.hg-toolbar button:disabled {
+	color: #aaa;
+	cursor: default;
+}
+
+.hg-toolbar input,
+.hg-toolbar select {
+	border: 1px solid #ccc;
+	border-radius: 0.3rem;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 0.85rem;
+	padding: 0.25rem 0.4rem;
+}
+
+.hg-group {
+	display: inline-flex;
+	gap: 0.3rem;
+}
+
+.hg-spacer {
+	flex: 1;
+}
+
+.hg-mono {
+	font-family: Menlo, Consolas, monospace;
+	font-size: 0.9rem;
+}
+
+.hg-result {
+	color: #a31515;
+}
+
+.hg-graph-wrap {
+	overflow-x: auto;
+	text-align: center;
+}
+
+.hg-graph {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	margin: 0.5rem auto;
+}
+
+.hg-panels {
+	display: grid;
+	gap: 0.8rem;
+	grid-template-columns: 1fr 1fr;
+}
+
+.hg-panels pre,
+.hg-output {
+	font-size: 0.85rem;
+	margin: 0;
+	min-height: 5rem;
+	white-space: pre-wrap;
+}
+
+.hg-scroll {
+	max-height: 14rem;
+	overflow-y: auto;
+}
+
+.hg-textarea {
+	border: 1px solid #ccc;
+	border-radius: 0.3rem;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 0.95rem;
+	padding: 0.5rem;
+	width: 100%;
+}
+
+.hg-trees {
+	display: grid;
+	gap: 0.8rem;
+	grid-template-columns: repeat(3, 1fr);
+	margin: 0.6rem 0;
+}
+
+.hg-tree {
+	border: 1.5px solid #888a85;
+	border-radius: 0.3rem;
+	padding: 0.5rem 0.7rem;
+}
+
+.hg-tree-index {
+	background: #fde9c9;
+	border-color: #ce5c00;
+}
+
+.hg-tree-head {
+	background: #dbe7f5;
+	border-color: #3465a4;
+}
+
+.hg-tree-name {
+	font-family: Menlo, Consolas, monospace;
+	font-weight: 600;
+}
+
+.hg-tree-note,
+.hg-tree-hash {
+	color: #555;
+	font-size: 0.8rem;
+}
+
+.hg-tree-hash {
+	font-family: Menlo, Consolas, monospace;
+}
+
+.hg-tree-file {
+	background: #fff !important;
+	border: 1px solid #e5e5e5;
+	font-size: 0.8rem;
+	margin: 0.4rem 0;
+	min-height: 4.5rem;
+	padding: 0.4rem 0.6rem;
+}
+
+.hg-conflict {
+	display: grid;
+	gap: 0.8rem;
+	grid-template-columns: 1fr 1fr;
+	margin: 0.6rem 0;
+}
+
+.hg-sources {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+}
+
+.hg-source {
+	border: 1.5px solid #888a85;
+	border-radius: 0.3rem;
+	padding: 0.4rem 0.6rem;
+}
+
+.hg-source pre {
+	background: transparent !important;
+	font-size: 0.8rem;
+	margin: 0;
+	padding: 0;
+}
+
+.hg-source-name {
+	font-size: 0.8rem;
+	font-weight: 600;
+	margin-bottom: 0.2rem;
+}
+
+.hg-markers {
+	background: #f2f2f2;
+	border-radius: 0.5rem;
+	padding: 0.6rem 0.8rem;
+}
+
+.hg-line {
+	border-left: 4px solid transparent;
+	font-family: Menlo, Consolas, monospace;
+	font-size: 0.85rem;
+	padding: 0.05rem 0.5rem;
+}
+
+.hg-marker {
+	color: #888a85;
+}
+
+.hg-ours,
+.hg-source.hg-ours {
+	background: #dbe7f5;
+	border-color: #3465a4;
+}
+
+.hg-base,
+.hg-source.hg-base {
+	background: #fff;
+	border-color: #888a85;
+}
+
+.hg-theirs,
+.hg-source.hg-theirs {
+	background: #e3f5cc;
+	border-color: #4e9a06;
+}
+
+.hg-line.hg-hot,
+.hg-source.hg-hot {
+	box-shadow: 0 0 0 2px #ce5c00 inset;
+}
+
+@media (max-width: 800px) {
+	.hg-panels,
+	.hg-trees,
+	.hg-conflict {
+		grid-template-columns: 1fr;
+	}
 }

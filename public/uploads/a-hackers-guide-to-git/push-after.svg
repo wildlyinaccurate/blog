@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-80 -90 440 560" width="440" height="560" font-size="18">
+  <title>push-after</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  <g>
+    <rect x="-60" y="-70" width="400" height="200" fill="none" stroke="#888a85" stroke-width="1.5" stroke-dasharray="8 6" rx="6"/>
+    <text x="-48" y="-48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-style="italic" fill="#888a85">origin (bare-repo)</text>
+  </g>
+  <g>
+    <rect x="-60" y="190" width="400" height="260" fill="none" stroke="#888a85" stroke-width="1.5" stroke-dasharray="8 6" rx="6"/>
+    <text x="-48" y="212" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-style="italic" fill="#888a85">clone-of-bare-repo</text>
+  </g>
+  <path d="M 58.3 0 L 26 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 58.3 288 L 26 288" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 140.8 360 L 23.14893232673474 299.8375222125348" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 0 262 L 0 26" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <text x="55" y="156" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">git push</text>
+  <g id="rA">
+    <circle cx="0" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">A</text>
+  </g>
+  <g id="rmain">
+    <rect x="58.3" y="-18" width="191.4" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="154" y="0" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">refs/heads/main</text>
+  </g>
+  <g id="A">
+    <circle cx="0" cy="288" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="0" y="288" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">A</text>
+  </g>
+  <g id="main">
+    <rect x="58.3" y="270" width="191.4" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="154" y="288" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">refs/heads/main</text>
+  </g>
+  <g id="omain">
+    <rect x="30.080000000000013" y="360" width="291.84" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="176" y="378" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">refs/remotes/origin/main</text>
+  </g>
+</svg>
