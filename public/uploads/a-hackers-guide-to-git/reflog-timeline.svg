@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-172.03999999999996 -146 669 768" width="669" height="768" font-size="18">
+  <title>reflog-timeline</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  
+  <path d="M 84 0 L 26 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 194 0 L 136 0" fill="none" stroke="#888a85" stroke-width="1.5" opacity="0.5" marker-end="url(#arrow-ghost)"/>
+  <path d="M 304 0 L 246 0" fill="none" stroke="#888a85" stroke-width="1.5" opacity="0.5" marker-end="url(#arrow-ghost)"/>
+  <path d="M 110 72 L 110 26" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 363 270 L 424.99999999999994 270" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 363 346.5 L 424.99999999999994 346.5" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 363 423 L 424.99999999999994 423" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 363 499.5 L 424.99999999999994 499.5" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 363 576 L 424.99999999999994 576" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <g id="hist">
+    
+    <text x="165" y="-108" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#888a85" font-style="italic">the history</text>
+  </g>
+  <g id="A">
+    <circle cx="0" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">A</text>
+  </g>
+  <g id="B">
+    <circle cx="110" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">B</text>
+  </g>
+  <g id="C" opacity="0.35" stroke-dasharray="6 4">
+    <circle cx="220" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="220" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">C</text>
+  </g>
+  <g id="D" opacity="0.35" stroke-dasharray="6 4">
+    <circle cx="330" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="330" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">D</text>
+  </g>
+  <g id="main">
+    <rect x="75.68" y="72" width="68.64" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="90" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">main</text>
+  </g>
+  <g id="rl">
+    
+    <text x="165" y="198.00000000000003" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#888a85" font-style="italic">the reflog</text>
+  </g>
+  <g id="e0">
+    <rect x="-29.279999999999973" y="252" width="392.28" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="166.86" y="270" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">HEAD@{0}: reset: moving to HEAD~2</text>
+  </g>
+  <g id="k0">
+    <circle cx="450.99999999999994" cy="270" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="450.99999999999994" y="270" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">B</text>
+  </g>
+  <g id="e1">
+    <rect x="-107.39999999999998" y="328.5" width="470.4" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="127.80000000000001" y="346.5" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">HEAD@{1}: commit: Add empty LICENSE file</text>
+  </g>
+  <g id="k1" opacity="0.35" stroke-dasharray="6 4">
+    <circle cx="450.99999999999994" cy="346.5" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="450.99999999999994" y="346.5" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">D</text>
+  </g>
+  <g id="e2">
+    <rect x="-118.56" y="405" width="481.56" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="122.22" y="423" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">HEAD@{2}: commit: Add some actual content</text>
+  </g>
+  <g id="k2" opacity="0.35" stroke-dasharray="6 4">
+    <circle cx="450.99999999999994" cy="423" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="450.99999999999994" y="423" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">C</text>
+  </g>
+  <g id="e3">
+    <rect x="-6.9599999999999795" y="481.5" width="369.96" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="178.02" y="499.5" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">HEAD@{3}: commit: Add TODO note</text>
+  </g>
+  <g id="k3">
+    <circle cx="450.99999999999994" cy="499.5" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="450.99999999999994" y="499.5" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">B</text>
+  </g>
+  <g id="e4">
+    <rect x="-152.03999999999996" y="558" width="515.04" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="105.48000000000002" y="576" text-anchor="middle" dominant-baseline="central" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="18" fill="#2e3436">HEAD@{4}: commit (initial): Add empty readme</text>
+  </g>
+  <g id="k4">
+    <circle cx="450.99999999999994" cy="576" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="450.99999999999994" y="576" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">A</text>
+  </g>
+</svg>

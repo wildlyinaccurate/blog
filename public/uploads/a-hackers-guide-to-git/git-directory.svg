@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -60 460 600" width="460" height="600" font-size="18">
+  <title>git-directory</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  <g>
+    <rect x="-20" y="-40" width="420" height="560" fill="none" stroke="#888a85" stroke-width="1.5" stroke-dasharray="8 6" rx="6"/>
+    <text x="-8" y="-18" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="16" font-style="italic" fill="#888a85">.git/</text>
+  </g>
+  
+  <g id="objects">
+    <rect x="0" y="0" width="380" height="68" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="16" y="24" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">objects/</text>
+    <text x="16" y="48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">every blob, tree, commit and tag</text>
+  </g>
+  <g id="refs">
+    <rect x="0" y="85" width="380" height="68" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="16" y="109" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">refs/</text>
+    <text x="16" y="133" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">branches, tags, remote-tracking branches</text>
+  </g>
+  <g id="head">
+    <rect x="0" y="170" width="380" height="68" fill="#ffffff" stroke="#888a85" stroke-width="1.5"/>
+    <text x="16" y="194" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">HEAD</text>
+    <text x="16" y="218" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">which branch is checked out</text>
+  </g>
+  <g id="index">
+    <rect x="0" y="255" width="380" height="68" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="16" y="279" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">index</text>
+    <text x="16" y="303" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">the staging area</text>
+  </g>
+  <g id="logs">
+    <rect x="0" y="340" width="380" height="68" fill="#ffffff" stroke="#888a85" stroke-width="1.5"/>
+    <text x="16" y="364" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">logs/</text>
+    <text x="16" y="388" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">the reflog</text>
+  </g>
+  <g id="config">
+    <rect x="0" y="425" width="380" height="68" fill="#ffffff" stroke="#888a85" stroke-width="1.5"/>
+    <text x="16" y="449" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">config</text>
+    <text x="16" y="473" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">this repository's settings and remotes</text>
+  </g>
+</svg>

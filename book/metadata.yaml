@@ -1,0 +1,13 @@
+---
+title: A Hacker's Guide to Git
+subtitle: Second Edition
+author: Joseph Wynn
+lang: en-GB
+date: 2026
+rights: © 2026 Joseph Wynn. All rights reserved.
+description: >
+  A guide to how Git works under the hood: objects, trees, commits, the index,
+  references, branches, merging, rebasing, remotes, and the tools that make
+  sense once you understand them.
+toc-title: Contents
+---

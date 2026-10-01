@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-81.5 -46 524 309" width="524" height="309" font-size="18">
+  <title>merge-base</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  
+  <path d="M 89.87711022071366 16.464182546688825 L 20.122889779286346 73.53581745331118" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 89.87711022071366 163.53581745331118 L 20.122889779286346 106.46418254668882" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 171.14999999999998 0 L 136 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 186.54999999999995 180 L 136 180" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 0 207 L 0 116" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g id="A">
+    <circle cx="0" cy="90" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="0" y="90" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">A</text>
+  </g>
+  <g id="B">
+    <circle cx="110" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">B</text>
+  </g>
+  <g id="C">
+    <circle cx="110" cy="180" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="110" y="180" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">C</text>
+  </g>
+  <g id="theirs">
+    <rect x="171.14999999999998" y="-18" width="251.70000000000002" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="297" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">theirs (feature-branch)</text>
+  </g>
+  <g id="ours">
+    <rect x="186.54999999999995" y="162" width="132.9" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="252.99999999999994" y="180" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">ours (main)</text>
+  </g>
+  <g id="base">
+    <rect x="-61.50000000000001" y="207" width="123.00000000000001" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="0" y="225" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">merge base</text>
+  </g>
+</svg>

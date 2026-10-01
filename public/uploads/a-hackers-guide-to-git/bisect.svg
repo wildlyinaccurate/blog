@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-46 -101 990 615" width="990" height="615" font-size="18">
+  <title>bisect</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  
+  <path d="M 48.80000000000001 0 L 26 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 123.60000000000002 0 L 100.80000000000001 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 198.4 0 L 175.60000000000002 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 273.20000000000005 0 L 250.4 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 348.00000000000006 0 L 325.20000000000005 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 422.8 0 L 400.00000000000006 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 497.6 0 L 474.8 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 572.4000000000001 0 L 549.6 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 647.2 0 L 624.4000000000001 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 722.0000000000001 0 L 699.2 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 796.8000000000001 0 L 774.0000000000001 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 871.6 0 L 848.8000000000001 0" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 448.8 -45 L 448.8 -26" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 48.80000000000001 125.99999999999999 L 26 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 123.60000000000002 125.99999999999999 L 100.80000000000001 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 198.4 125.99999999999999 L 175.60000000000002 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 273.20000000000005 125.99999999999999 L 250.4 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 348.00000000000006 125.99999999999999 L 325.20000000000005 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 422.8 125.99999999999999 L 400.00000000000006 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 497.6 125.99999999999999 L 474.8 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 572.4000000000001 125.99999999999999 L 549.6 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 647.2 125.99999999999999 L 624.4000000000001 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 722.0000000000001 125.99999999999999 L 699.2 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 796.8000000000001 125.99999999999999 L 774.0000000000001 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 871.6 125.99999999999999 L 848.8000000000001 125.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 673.2 81 L 673.2 99.99999999999999" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 48.80000000000001 251.99999999999997 L 26 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 123.60000000000002 251.99999999999997 L 100.80000000000001 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 198.4 251.99999999999997 L 175.60000000000002 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 273.20000000000005 251.99999999999997 L 250.4 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 348.00000000000006 251.99999999999997 L 325.20000000000005 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 422.8 251.99999999999997 L 400.00000000000006 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 497.6 251.99999999999997 L 474.8 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 572.4000000000001 251.99999999999997 L 549.6 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 647.2 251.99999999999997 L 624.4000000000001 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 722.0000000000001 251.99999999999997 L 699.2 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 796.8000000000001 251.99999999999997 L 774.0000000000001 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 871.6 251.99999999999997 L 848.8000000000001 251.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 598.4000000000001 206.99999999999997 L 598.4000000000001 225.99999999999997" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <path d="M 48.80000000000001 377.99999999999994 L 26 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 123.60000000000002 377.99999999999994 L 100.80000000000001 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 198.4 377.99999999999994 L 175.60000000000002 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 273.20000000000005 377.99999999999994 L 250.4 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 348.00000000000006 377.99999999999994 L 325.20000000000005 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 422.8 377.99999999999994 L 400.00000000000006 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 497.6 377.99999999999994 L 474.8 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 572.4000000000001 377.99999999999994 L 549.6 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 647.2 377.99999999999994 L 624.4000000000001 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 722.0000000000001 377.99999999999994 L 699.2 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 796.8000000000001 377.99999999999994 L 774.0000000000001 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 871.6 377.99999999999994 L 848.8000000000001 377.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 523.6 332.99999999999994 L 523.6 351.99999999999994" fill="none" stroke="#2e3436" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#arrow)"/>
+  <g id="c0_0">
+    <circle cx="0" cy="0" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="0" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">0</text>
+  </g>
+  <g id="c0_1">
+    <circle cx="74.80000000000001" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="74.80000000000001" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">1</text>
+  </g>
+  <g id="c0_2">
+    <circle cx="149.60000000000002" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="149.60000000000002" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">2</text>
+  </g>
+  <g id="c0_3">
+    <circle cx="224.4" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="224.4" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">3</text>
+  </g>
+  <g id="c0_4">
+    <circle cx="299.20000000000005" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="299.20000000000005" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">4</text>
+  </g>
+  <g id="c0_5">
+    <circle cx="374.00000000000006" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="374.00000000000006" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">5</text>
+  </g>
+  <g id="c0_6">
+    <circle cx="448.8" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="448.8" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">6</text>
+  </g>
+  <g id="c0_7">
+    <circle cx="523.6" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="523.6" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">7</text>
+  </g>
+  <g id="c0_8">
+    <circle cx="598.4000000000001" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="598.4000000000001" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">8</text>
+  </g>
+  <g id="c0_9">
+    <circle cx="673.2" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="673.2" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">9</text>
+  </g>
+  <g id="c0_10">
+    <circle cx="748.0000000000001" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="748.0000000000001" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">10</text>
+  </g>
+  <g id="c0_11">
+    <circle cx="822.8000000000001" cy="0" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="822.8000000000001" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">11</text>
+  </g>
+  <g id="c0_12">
+    <circle cx="897.6" cy="0" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="897.6" y="0" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">12</text>
+  </g>
+  <g id="t0">
+    <rect x="367.5" y="-81" width="162.60000000000002" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="448.8" y="-63" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">step 1: test 6</text>
+  </g>
+  <g id="c1_0">
+    <circle cx="0" cy="125.99999999999999" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="0" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">0</text>
+  </g>
+  <g id="c1_1">
+    <circle cx="74.80000000000001" cy="125.99999999999999" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="74.80000000000001" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">1</text>
+  </g>
+  <g id="c1_2">
+    <circle cx="149.60000000000002" cy="125.99999999999999" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="149.60000000000002" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">2</text>
+  </g>
+  <g id="c1_3">
+    <circle cx="224.4" cy="125.99999999999999" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="224.4" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">3</text>
+  </g>
+  <g id="c1_4">
+    <circle cx="299.20000000000005" cy="125.99999999999999" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="299.20000000000005" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">4</text>
+  </g>
+  <g id="c1_5">
+    <circle cx="374.00000000000006" cy="125.99999999999999" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="374.00000000000006" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">5</text>
+  </g>
+  <g id="c1_6">
+    <circle cx="448.8" cy="125.99999999999999" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="448.8" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">6</text>
+  </g>
+  <g id="c1_7">
+    <circle cx="523.6" cy="125.99999999999999" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="523.6" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">7</text>
+  </g>
+  <g id="c1_8">
+    <circle cx="598.4000000000001" cy="125.99999999999999" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="598.4000000000001" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">8</text>
+  </g>
+  <g id="c1_9">
+    <circle cx="673.2" cy="125.99999999999999" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="673.2" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">9</text>
+  </g>
+  <g id="c1_10">
+    <circle cx="748.0000000000001" cy="125.99999999999999" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="748.0000000000001" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">10</text>
+  </g>
+  <g id="c1_11">
+    <circle cx="822.8000000000001" cy="125.99999999999999" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="822.8000000000001" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">11</text>
+  </g>
+  <g id="c1_12">
+    <circle cx="897.6" cy="125.99999999999999" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="897.6" y="125.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">12</text>
+  </g>
+  <g id="t1">
+    <rect x="591.9000000000001" y="44.99999999999999" width="162.60000000000002" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="673.2" y="62.99999999999999" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">step 2: test 9</text>
+  </g>
+  <g id="c2_0">
+    <circle cx="0" cy="251.99999999999997" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="0" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">0</text>
+  </g>
+  <g id="c2_1">
+    <circle cx="74.80000000000001" cy="251.99999999999997" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="74.80000000000001" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">1</text>
+  </g>
+  <g id="c2_2">
+    <circle cx="149.60000000000002" cy="251.99999999999997" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="149.60000000000002" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">2</text>
+  </g>
+  <g id="c2_3">
+    <circle cx="224.4" cy="251.99999999999997" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="224.4" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">3</text>
+  </g>
+  <g id="c2_4">
+    <circle cx="299.20000000000005" cy="251.99999999999997" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="299.20000000000005" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">4</text>
+  </g>
+  <g id="c2_5">
+    <circle cx="374.00000000000006" cy="251.99999999999997" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="374.00000000000006" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">5</text>
+  </g>
+  <g id="c2_6">
+    <circle cx="448.8" cy="251.99999999999997" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="448.8" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">6</text>
+  </g>
+  <g id="c2_7">
+    <circle cx="523.6" cy="251.99999999999997" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="523.6" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">7</text>
+  </g>
+  <g id="c2_8">
+    <circle cx="598.4000000000001" cy="251.99999999999997" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="598.4000000000001" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">8</text>
+  </g>
+  <g id="c2_9">
+    <circle cx="673.2" cy="251.99999999999997" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="673.2" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">9</text>
+  </g>
+  <g id="c2_10">
+    <circle cx="748.0000000000001" cy="251.99999999999997" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="748.0000000000001" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">10</text>
+  </g>
+  <g id="c2_11">
+    <circle cx="822.8000000000001" cy="251.99999999999997" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="822.8000000000001" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">11</text>
+  </g>
+  <g id="c2_12">
+    <circle cx="897.6" cy="251.99999999999997" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="897.6" y="251.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">12</text>
+  </g>
+  <g id="t2">
+    <rect x="517.1000000000001" y="170.99999999999997" width="162.60000000000002" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="598.4000000000001" y="188.99999999999997" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">step 3: test 8</text>
+  </g>
+  <g id="c3_0">
+    <circle cx="0" cy="377.99999999999994" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="0" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">0</text>
+  </g>
+  <g id="c3_1">
+    <circle cx="74.80000000000001" cy="377.99999999999994" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="74.80000000000001" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">1</text>
+  </g>
+  <g id="c3_2">
+    <circle cx="149.60000000000002" cy="377.99999999999994" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="149.60000000000002" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">2</text>
+  </g>
+  <g id="c3_3">
+    <circle cx="224.4" cy="377.99999999999994" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="224.4" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">3</text>
+  </g>
+  <g id="c3_4">
+    <circle cx="299.20000000000005" cy="377.99999999999994" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="299.20000000000005" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">4</text>
+  </g>
+  <g id="c3_5">
+    <circle cx="374.00000000000006" cy="377.99999999999994" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="374.00000000000006" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">5</text>
+  </g>
+  <g id="c3_6">
+    <circle cx="448.8" cy="377.99999999999994" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="448.8" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">6</text>
+  </g>
+  <g id="c3_7">
+    <circle cx="523.6" cy="377.99999999999994" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="523.6" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">7</text>
+  </g>
+  <g id="c3_8">
+    <circle cx="598.4000000000001" cy="377.99999999999994" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="598.4000000000001" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">8</text>
+  </g>
+  <g id="c3_9">
+    <circle cx="673.2" cy="377.99999999999994" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="673.2" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">9</text>
+  </g>
+  <g id="c3_10">
+    <circle cx="748.0000000000001" cy="377.99999999999994" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="748.0000000000001" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">10</text>
+  </g>
+  <g id="c3_11">
+    <circle cx="822.8000000000001" cy="377.99999999999994" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="822.8000000000001" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">11</text>
+  </g>
+  <g id="c3_12">
+    <circle cx="897.6" cy="377.99999999999994" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="897.6" y="377.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436">12</text>
+  </g>
+  <g id="t3">
+    <rect x="442.3" y="296.99999999999994" width="162.60000000000002" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="523.6" y="314.99999999999994" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">step 4: test 7</text>
+  </g>
+  <g id="lg">
+    <circle cx="22.44" cy="468" r="26" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="22.44" y="468" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436"></text>
+  </g>
+  <g id="lgt">
+    <rect x="103.06000000000003" y="450" width="123.00000000000001" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="164.56000000000003" y="468" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">known good</text>
+  </g>
+  <g id="lb">
+    <circle cx="388.96000000000004" cy="468" r="26" fill="#fcaf3e" stroke="#ce5c00" stroke-width="1.5"/>
+    <text x="388.96000000000004" y="468" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436"></text>
+  </g>
+  <g id="lbt">
+    <rect x="467.05" y="450" width="113.10000000000001" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="523.6" y="468" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">known bad</text>
+  </g>
+  <g id="lu">
+    <circle cx="748.0000000000001" cy="468" r="26" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="748.0000000000001" y="468" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" fill="#2e3436"></text>
+  </g>
+  <g id="lut">
+    <rect x="816.0799999999999" y="450" width="103.2" height="36" fill="#ffffff" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="867.68" y="468" text-anchor="middle" dominant-baseline="central" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="18" fill="#2e3436">untested</text>
+  </g>
+</svg>

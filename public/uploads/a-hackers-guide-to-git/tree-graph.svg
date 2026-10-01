@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -20 620 598" width="620" height="598" font-size="18">
+  <title>tree-graph</title>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2e3436"/>
+    </marker>
+    <marker id="arrow-ghost" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888a85"/>
+    </marker>
+  </defs>
+  
+  <path d="M 125 134 L 125 200" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 125 134 V 167 H 455 V 200" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 455 312 L 455 380" fill="none" stroke="#2e3436" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <g id="root">
+    <rect x="0" y="0" width="250" height="134" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="16" y="24" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">292240e</text>
+    <text x="16" y="48" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">(root)</text>
+    <text x="16" y="70" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">Type  Hash     Name</text>
+    <text x="16" y="92" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">blob  9761654  README</text>
+    <text x="16" y="114" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">tree  675bff7  src</text>
+  </g>
+  <g id="readme">
+    <rect x="0" y="200" width="250" height="90" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="16" y="224" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">9761654</text>
+    <text x="16" y="248" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">README</text>
+    <text x="16" y="270" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">This is the readme.</text>
+  </g>
+  <g id="src">
+    <rect x="330" y="200" width="250" height="112" fill="#729fcf" stroke="#3465a4" stroke-width="1.5"/>
+    <text x="346" y="224" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">675bff7</text>
+    <text x="346" y="248" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">src</text>
+    <text x="346" y="270" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">Type  Hash     Name</text>
+    <text x="346" y="292" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">blob  032e1d1  hello.c</text>
+  </g>
+  <g id="hello">
+    <rect x="330" y="380" width="250" height="178" fill="#73d216" stroke="#4e9a06" stroke-width="1.5"/>
+    <text x="346" y="404" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="16" font-weight="bold" fill="#2e3436">032e1d1</text>
+    <text x="346" y="428" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="15" fill="#2e3436">hello.c</text>
+    <text x="346" y="450" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">#include &lt;stdio.h&gt;</text>
+    <text x="346" y="472" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve"></text>
+    <text x="346" y="494" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">int main() {</text>
+    <text x="346" y="516" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">    puts("Hello, world!");</text>
+    <text x="346" y="538" font-family="SFMono-Regular, Menlo, Consolas, Liberation Mono, monospace" font-size="15" fill="#2e3436" xml:space="preserve">}</text>
+  </g>
+</svg>
