@@ -17,7 +17,7 @@
     "tinacms": "^3.14.1"
   },
   "devDependencies": {
-    "@tinacms/cli": "^3.1.0",
+    "@tinacms/cli": "^4.0.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.5"
   }
