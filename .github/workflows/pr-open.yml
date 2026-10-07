@@ -9,6 +9,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
     steps:
       - uses: actions/checkout@v4
       - name: Setup node
@@ -17,4 +20,33 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - run: npm run build
+      - name: Build
+        uses: South-Paw/action-netlify-cli@v2
+        with:
+          args: build
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - name: Deploy preview
+        uses: South-Paw/action-netlify-cli@v2
+        id: netlify
+        with:
+          args: deploy --json --alias pr-${{ github.event.number }} --message "'PR ${{ github.event.number }} (${{ github.sha }})'"
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      - run: echo "Preview deployed to ${{ fromJson(steps.netlify.outputs.NETLIFY_OUTPUT).deploy_url }}" >> "$GITHUB_STEP_SUMMARY"
+      # The PR page only lists GitHub Deployment records, which the Netlify CLI doesn't create
+      - name: Record GitHub deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEPLOY_URL: ${{ fromJson(steps.netlify.outputs.NETLIFY_OUTPUT).deploy_url }}
+        run: |
+          deployment_id=$(jq -n --arg ref "${{ github.event.pull_request.head.sha }}" \
+            '{ref: $ref, environment: "preview", auto_merge: false, required_contexts: [], transient_environment: true}' \
+            | gh api "repos/$GITHUB_REPOSITORY/deployments" --input - --jq .id)
+
+          gh api "repos/$GITHUB_REPOSITORY/deployments/$deployment_id/statuses" \
+            -f state=success \
+            -f environment_url="$DEPLOY_URL" \
+            -F auto_inactive=true
